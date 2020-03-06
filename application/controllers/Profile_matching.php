@@ -34,7 +34,7 @@ class Profile_matching extends CI_Controller {
 			$this->load->model('model_sub_kriteria');
 			$this->load->model('model_nilai_profil_individu');
 			
-			//echo "OK";
+			
 			
 			$tabelkriteria = $this->model_kriteria->getdata(array(), "jenis_kriteria asc, id_kriteria asc");
 			$i=0;
@@ -43,7 +43,6 @@ class Profile_matching extends CI_Controller {
 				$i++;	
 			}
 			
-			//print_r($tabelkriteria);
 			$tabelindividu = $this->model_individu->getdata();
 			$i=0;
 			foreach($tabelindividu as $rowindividu)
@@ -112,7 +111,7 @@ class Profile_matching extends CI_Controller {
 						$total_nilai_gap_core_factor[$i] = $total_nilai_gap_core_factor[$i] + $nilai_gap;
 						$jumlah_kriteria_core_factor[$i]++;
 					}
-					else //if ($jenis_kriteria == 'Secondary Factor')
+					else 
 					{
 						$total_nilai_gap_secondary_factor[$i] = $total_nilai_gap_secondary_factor[$i] + $nilai_gap;
 						$jumlah_kriteria_secondary_factor[$i]++;
@@ -124,7 +123,6 @@ class Profile_matching extends CI_Controller {
 				$total_nilai[$i] = (0.6 * $rata2_nilai_gap_core_factor[$i]) + (0.4 * $rata2_nilai_gap_secondary_factor[$i]);	
 				$i++;
 			}		
-			//print_r($tabelindividu);
 			
 			$html = $html."<table width=\"700\" border=\"0\" cellspacing=\"1\" cellpadding=\"3\" bgcolor=\"#000099\">";
 				$html = $html."<tr>";
@@ -219,7 +217,6 @@ class Profile_matching extends CI_Controller {
 			}		
 			$html = $html."</table>";
 			
-			//echo $html;
 			$nrp_rangking = array();
 			$nm_karyawan_rangking = array();
 			$total_nilai_rangking = array();

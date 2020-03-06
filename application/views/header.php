@@ -66,7 +66,7 @@ $sub_menu = strtolower($this->uri->segment(2));
 		or $sub_menu == "kriteria" or $sub_menu == "kriteria_edit"
 		or $sub_menu == "sub_kriteria" or $sub_menu == "sub_kriteria_edit"
 		or $sub_menu == "nilai_profil_karyawan" or $sub_menu == "nilai_profil_karyawan_edit"
-		or $sub_menu == "user" or $sub_menu == "user_edit" 
+		or $sub_menu == "user" or $sub_menu == "user_edit" or $sub_menu == "analisis" 
 	) { ?>
 		<!-- Theme JS files -->
 		<script type="text/javascript" src="assets/js/plugins/tables/datatables/datatables.min.js"></script>
@@ -171,14 +171,6 @@ $sub_menu = strtolower($this->uri->segment(2));
 										<li class="<?php if ($sub_menu == "permintaan_tk" or $sub_menu == "permintaan_tk_edit") {
 														echo 'active';
 													} ?>"><a href="web/permintaan_tk">Form Permintaan Tenaga Kerja</a></li>
-										<?php
-										if ($ceks->level == "admin" || $ceks->level == "hrd") { ?>
-											
-											<li class="<?php if ($sub_menu == "realisasiptk" or $sub_menu == "realisasiptk_edit") {
-															echo 'active';
-														} ?>"><a href="web/realisasiptk">Realisasi</a></li>
-										<?php
-										}  ?>
 									</ul>
 								</li>
 
@@ -201,7 +193,7 @@ $sub_menu = strtolower($this->uri->segment(2));
 												 $sub_menu == "kriteria" or $sub_menu == "kriteria_edit" 
 												 or $sub_menu == "sub_kriteria" or $sub_menu == "sub_kriteria_edit"
 												 or $sub_menu == "nilai_profil_karyawan" or $sub_menu == "nilai_profil_karyawan_edit"
-												 or $sub_menu == "profile_matching"
+												 or $sub_menu == "analisis"
 											) {
 												echo 'active';
 											} ?>">
@@ -220,9 +212,9 @@ $sub_menu = strtolower($this->uri->segment(2));
 													} ?>"><a href="web/nilai_profil_karyawan">Nilai Profil Karyawan</a></li>
 									
 								</li>
-								<li class="<?php if ($sub_menu == "profile_matching") {
+								<li class="<?php if ($sub_menu == "analisis") {
 														echo 'active';
-													} ?>"><a href="Profile_matching/index">Analisa</a></li>
+													} ?>"><a href="web/analisis">Analisa</a></li>
 									
 								</li>
 								</ul>

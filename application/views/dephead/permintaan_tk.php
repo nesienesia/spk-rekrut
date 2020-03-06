@@ -40,32 +40,199 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                         <form class="form-horizontal" action="" method="post">
                             <div class="col-md-12">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2">Kebutuhan *</label>
-                                        <div class="col-lg-10">
-                                            <select class="form-control" name="id_uraian" onchange="changeValue(this.value)" autofocus>
-                                                <option value="">Pilih Kebutuhan</option>
-                                                <?php
-                                                    $jsArray = "var dtKamar = new Array();\n";
-                                                    foreach ($v_uraian->result() as $baris) {
 
-                                                        echo '<option value="' . $baris->id_uraian . '">' . "$baris->seksi [$baris->jabatan]" . '</option>';
-                                                        $jsArray .= "dtKamar['" . $baris->id_uraian . "'] = {
-                                        id_kualifikasi:'" . addslashes($baris->id_kualifikasi) . "', 
-                                        id_kebutuhan:'" . addslashes($baris->id_kebutuhan) . "'
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Departemen *</label>
+                                        <div class="col-lg-10">
+                                            <select class="form-control" name="departemen" onchange="changeValue(this.value)" autofocus>
+                                                <option value="">Pilih Deparetemen</option>
+                                                <?php
+                                                $jsArray = "var dtKamar = new Array();\n";
+                                                foreach ($v_dept->result() as $baris) {
+                                                    echo '<option value="' . $baris->nm_dep . '">' . "$baris->nm_dep" . '</option>';
+                                                    $jsArray .= "dtKamar['" . $baris->nm_dep . "'] = {
+                                        nm_dep:'" . addslashes($baris->nm_dep) . "'
                                       };\n";
-                                                    } ?>
+                                                } ?>
                                             </select>
                                             <script type="text/javascript">
                                                 <?php echo $jsArray; ?>
 
                                                 function changeValue(id) {
-                                                    document.getElementById('id_kualifikasi').value = dtKamar[id].id_kualifikasi;
-                                                    document.getElementById('id_kebutuhan').value = dtKamar[id].id_kebutuhan;
+                                                    document.getElementById('nm_dep').value = dtKamar[id].nm_dep;
                                                 };
                                             </script>
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Seksi *</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="seksi" class="form-control" value="" required maxlength="5" placeholder="Seksi">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Jabatan *</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="jabatan" class="form-control" value="" required maxlength="5" placeholder="Jabatan">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Golongan *</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="golongan" class="form-control" value="" required maxlength="5" placeholder="Golongan">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Jumlah *</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="1" max="100" name="jumlah" class="form-control" value="" required placeholder="Jumlah Orang">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Sumber Tenaga *</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="sumber_tenaga" class="form-control" value="Internal" required maxlength="5" placeholder="Sumber Tenaga" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Due Date *</label>
+                                        <div class="col-lg-10">
+                                            <input type="date" name="due_date" class="form-control" value="" required placeholder="Due Date">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Tujuan *</label>
+                                        <div class="col-lg-10">
+                                            <input type="radio" name="tujuan" value="Penggantian" required> Penggantian<br>
+                                            <input type="radio" name="tujuan" value="Penambahan" required> Penambahan<br>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Atas Nama Penggantian </label>
+                                        <div class="col-lg-10">
+                                            <textarea name="an" rows="8" cols="80" class="form-control" placeholder="Atas Nama Penggantian"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Alasan Penambahan </label>
+                                        <div class="col-lg-10">
+                                            <textarea name="alasan" rows="8" cols="80" class="form-control" placeholder="Alasan Penambahan"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Pendidikan *</label>
+                                        <div class="col-lg-10">
+                                            <select class="form-control" name="pendidikan" onchange="changeValue(this.value)" autofocus>
+                                                <option value="">Pilih Pendidikan</option>
+                                                <option value="S2">S2</option>
+                                                <option value="S1">S1</option>
+                                                <option value="D4">D4</option>
+                                                <option value="D3">D3</option>
+                                                <option value="SLTA">SLTA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Jurusan *</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="jurusan" class="form-control" value="" maxlength="35" placeholder="Jurusan">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Pengalaman *</label>
+                                        <div class="col-lg-10">
+                                            <input type="radio" name="pengalaman" value="Fresh Graduate" required> Fresh Graduate<br>
+                                            <input type="radio" name="pengalaman" value="Pengalaman" required> Pengalaman<br>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Lama Pengalaman</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="lama_pengalaman" class="form-control" value="" maxlength="35" placeholder="Kosongkan jika Fresh Graduate">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Bidang Pengalaman</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="1" max="80" class="form-control" name="bidang_pengalaman" required="required" placeholder="Usia">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Status *</label>
+                                        <div class="col-lg-10">
+                                            <select class="form-control" name="status" onchange="changeValue(this.value)" autofocus>
+                                                <option value="">Pilih Pengalaman</option>
+                                                <option value="Kontrak">Kontrak</option>
+                                                <option value="Percobaan">Percobaan</option>
+                                                <option value="Magang">Magang</option>
+                                                <option value="PKL">PKL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Lama Kontrak</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="status_kontrak" class="form-control" value="" maxlength="35" placeholder="Lama Kontrak">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Batas Usia *</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="1" max="80" class="form-control" name="usia" required="required" placeholder="Usia">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Jenis Kelamin *</label>
+                                        <div class="col-lg-10">
+                                            <input type="radio" name="jk" value="L" required> Laki-laki<br>
+                                            <input type="radio" name="jk" value="P" required> Perempuan<br>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Skill & Knowledge Khusus </label>
+                                        <div class="col-lg-10">
+                                            <textarea name="skill" rows="8" cols="80" class="form-control" placeholder="Skill & Knowledge Khusus"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Bertanggungjawab *</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="bertanggungjawab" class="form-control" value="" required maxlength="35" placeholder="Bertanggungjawab">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Jumlah Bawahan *</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="1" max="100" class="form-control" name="jumlah_bawahan" required="required" placeholder="Usia">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Tugas Pokok </label>
+                                        <div class="col-lg-10">
+                                            <textarea name="tgs_pokok" rows="8" cols="80" class="form-control" placeholder="Tugas Pokok"></textarea>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">NRP Pemohon *</label>
                                         <div class="col-lg-10">
@@ -86,13 +253,13 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                             <select class="form-control" name="dept_pemohon_ptk" onchange="changeValue(this.value)" autofocus>
                                                 <option value="">Pilih Deparetmen</option>
                                                 <?php
-                                                    $jsArray = "var dtKamar = new Array();\n";
-                                                    foreach ($v_dept->result() as $baris) {
-                                                        echo '<option value="' . $baris->nm_dep . '">' . "$baris->nm_dep" . '</option>';
-                                                        $jsArray .= "dtKamar['" . $baris->nm_dep . "'] = {
+                                                $jsArray = "var dtKamar = new Array();\n";
+                                                foreach ($v_dept->result() as $baris) {
+                                                    echo '<option value="' . $baris->nm_dep . '">' . "$baris->nm_dep" . '</option>';
+                                                    $jsArray .= "dtKamar['" . $baris->nm_dep . "'] = {
                                         nm_dep:'" . addslashes($baris->nm_dep) . "'
                                       };\n";
-                                                    } ?>
+                                                } ?>
                                             </select>
                                             <script type="text/javascript">
                                                 <?php echo $jsArray; ?>
@@ -101,13 +268,6 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                                     document.getElementById('nm_dep').value = dtKamar[id].nm_dep;
                                                 };
                                             </script>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2">Kota *</label>
-                                        <div class="col-lg-10">
-                                            <input type="text" name="kota" class="form-control" value="" required maxlength="35" placeholder="Kota Pengisian Form">
                                         </div>
                                     </div>
 
@@ -132,7 +292,7 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
 
                 <hr>
             <?php
-            } ?>
+                    } ?>
 
 
             <div class="table-responsive">
@@ -172,10 +332,9 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                         <?php
                         $no = 1;
                         foreach ($v_permintaan->result() as $baris) {
-                            ?>
+                        ?>
                             <tr>
                                 <td><?php echo $baris->id_permintaan; ?></td>
-                                <td><?php echo $baris->divisi; ?></td>
                                 <td><?php echo $baris->jumlah; ?></td>
                                 <td><?php echo $baris->sumber_tenaga; ?></td>
                                 <td><?php echo date('d F Y', strtotime($baris->due_date)); ?></td>
@@ -199,13 +358,13 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                 <td><?php echo $baris->kota; ?></td>
                                 <td><?php echo date('d F Y', strtotime($baris->tgl_permintaan)); ?></td>
                                 <?php
-                                    if ($ceks->level == "dephead" || $ceks->level == "admin") { ?>
+                                if ($ceks->level == "dephead" || $ceks->level == "admin") { ?>
                                     <td>
                                         <a href="web/permintaan_tk_edit/<?php echo $baris->id_permintaan; ?>" title="Edit"><span class="icon-pencil"></span></a> &nbsp;
                                         <a href="web/permintaan_tk_hapus/<?php echo $baris->id_permintaan; ?>" title="Hapus" onclick="return confirm('Apakah Anda yakin?')"><span class="icon-trash"></span></a> &nbsp;
                                     </td>
                                 <?php
-                                    } ?>
+                                } ?>
                             </tr>
                         <?php
                             $no++;

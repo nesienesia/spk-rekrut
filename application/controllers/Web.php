@@ -14,19 +14,19 @@ class Web extends CI_Controller
 			$data['user']  			    = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
 			$data['users']  			  = $this->Mcrud->get_data('tbl_user');
 			$data['karyawan']  		= $this->Mcrud->get_data('tbl_karyawan');
-		
+
 			$data['v_permintaan']   = $this->Mcrud->get_data('tbl_permintaan');
 			$data['v_realisasiptk']		= $this->Mcrud->get_data_realisasiptk('');
-		
+
 			$data['v_penilaian']	= $this->Mcrud->get_data('tbl_penilaian');
-			
+
 			$this->load->view('header', $data);
 			$this->load->view('beranda', $data);
 			$this->load->view('footer');
 		}
 	}
 
-	
+
 	public function login()
 	{
 		$ceks = $this->session->userdata('kamar@2017');
@@ -197,7 +197,7 @@ class Web extends CI_Controller
 				$status 		= htmlentities(strip_tags($_POST['status']));
 				$usia			= htmlentities(strip_tags($_POST['usia']));
 				$jk 			= htmlentities(strip_tags($_POST['jk']));
-				
+
 
 				$cek_kd = $this->Mcrud->get_data_by_pk('tbl_karyawan', 'nrp', $nrp);
 				if ($cek_kd->num_rows() == 0) {
@@ -287,17 +287,17 @@ class Web extends CI_Controller
 
 				$data = array(
 					'nrp'			=> $nrp,
-						'nm_karyawan'	=> $nm_karyawan,
-						'dept'			=> $dept,
-						'seksi'			=> $seksi,
-						'gol'			=> $gol,
-						'subgol'		=> $subgol,
-						'jab'			=> $jab,
-						'pendidikan'	=> $pendidikan,
-						'pengalaman'	=> $pengalaman,
-						'status'		=> $status,
-						'usia'			=> $usia,
-						'jk'			=> $jk
+					'nm_karyawan'	=> $nm_karyawan,
+					'dept'			=> $dept,
+					'seksi'			=> $seksi,
+					'gol'			=> $gol,
+					'subgol'		=> $subgol,
+					'jab'			=> $jab,
+					'pendidikan'	=> $pendidikan,
+					'pengalaman'	=> $pengalaman,
+					'status'		=> $status,
+					'usia'			=> $usia,
+					'jk'			=> $jk
 				);
 				$this->Mcrud->update_data('tbl_karyawan', array('nrp' => $id), $data);
 
@@ -338,7 +338,7 @@ class Web extends CI_Controller
 		}
 	}
 
-	
+
 
 	// ini permintaan_tk
 	public function permintaan_tk()
@@ -356,8 +356,7 @@ class Web extends CI_Controller
 			$this->load->view('footer');
 
 			if (isset($_POST['btnsimpan'])) {
-				$divisi 			= htmlentities(strip_tags($_POST['divisi']));
-				$department 		= htmlentities(strip_tags($_POST['department']));
+				$departemen 		= htmlentities(strip_tags($_POST['departemen']));
 				$seksi 				= htmlentities(strip_tags($_POST['seksi']));
 				$jabatan			= htmlentities(strip_tags($_POST['jabatan']));
 				$golongan 			= htmlentities(strip_tags($_POST['golongan']));
@@ -384,8 +383,7 @@ class Web extends CI_Controller
 				$tgl_permintaan		= htmlentities(strip_tags($_POST['tgl_permintaan']));
 
 				$data = array(
-					'divisi'			=> $divisi,
-					'department'		=> $department,
+					'departemen'		=> $departemen,
 					'seksi'				=> $seksi,
 					'jabatan'			=> $jabatan,
 					'golongan'			=> $golongan,
@@ -451,8 +449,7 @@ class Web extends CI_Controller
 			$this->load->view('footer');
 
 			if (isset($_POST['btnsimpan'])) {
-				$divisi 			= htmlentities(strip_tags($_POST['divisi']));
-				$department 		= htmlentities(strip_tags($_POST['department']));
+				$departemen 		= htmlentities(strip_tags($_POST['departemen']));
 				$seksi 				= htmlentities(strip_tags($_POST['seksi']));
 				$jabatan			= htmlentities(strip_tags($_POST['jabatan']));
 				$golongan 			= htmlentities(strip_tags($_POST['golongan']));
@@ -479,8 +476,7 @@ class Web extends CI_Controller
 				$tgl_permintaan		= htmlentities(strip_tags($_POST['tgl_permintaan']));
 
 				$data = array(
-					'divisi'			=> $divisi,
-					'department'		=> $department,
+					'departemen'		=> $departemen,
 					'seksi'				=> $seksi,
 					'jabatan'			=> $jabatan,
 					'golongan'			=> $golongan,
@@ -644,7 +640,7 @@ class Web extends CI_Controller
 			$sheet->getStyle('X1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_TOP);
 			$sheet->getStyle('Y1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_TOP);
 			$sheet->getStyle('Z1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_TOP);
-		
+
 			$default_border = array(
 				'style' => PHPExcel_Style_Border::BORDER_THIN,
 				'color' => array('rgb' => '1006A3')
@@ -778,7 +774,7 @@ class Web extends CI_Controller
 	}
 
 
-	
+
 	// ini penilaian
 	public function penilaian()
 	{
@@ -812,11 +808,11 @@ class Web extends CI_Controller
 				$waktu_kerja	= htmlentities(strip_tags($_POST['waktu_kerja']));
 				$pelaksanaan_peraturan		= htmlentities(strip_tags($_POST['pelaksanaan_peraturan']));
 				$kehadiran		= htmlentities(strip_tags($_POST['kehadiran']));
-				$score		= (0.12 * $kualitas) + (0.11 * $kuantitas) + 
-				(0.12 * $kerjasama) + (0.11 * $kepemimpinan) + (0.06 * $kemandirian) 
-				+ (0.08 * $qcc) + (0.08 * $sumbang_saran) + 
-				(0.08 * $tanggung_jawab)  +
-				 (0.10 * $absensi) + (0.05 * $waktu_kerja) + (0.05 * $pelaksanaan_peraturan) + (0.05 * $kehadiran);
+				$score		= (0.12 * $kualitas) + (0.11 * $kuantitas) +
+					(0.12 * $kerjasama) + (0.11 * $kepemimpinan) + (0.06 * $kemandirian)
+					+ (0.08 * $qcc) + (0.08 * $sumbang_saran) +
+					(0.08 * $tanggung_jawab)  +
+					(0.10 * $absensi) + (0.05 * $waktu_kerja) + (0.05 * $pelaksanaan_peraturan) + (0.05 * $kehadiran);
 				if ($score >= 80) {
 					$rekomendasi = "Baik Sekali";
 				} elseif ($score >= 70) {
@@ -910,9 +906,9 @@ class Web extends CI_Controller
 				$waktu_kerja	= htmlentities(strip_tags($_POST['waktu_kerja']));
 				$pelaksanaan_peraturan		= htmlentities(strip_tags($_POST['pelaksanaan_peraturan']));
 				$kehadiran		= htmlentities(strip_tags($_POST['kehadiran']));
-				$score		= ((0.12 * $kualitas) + (0.11 * $kuantitas)) + ((0.12 * $kerjasama) + (0.11 * $kepemimpinan)) + ((0.6 * $kemandirian) 
-				+ (0.8 * $qcc) + (0.8 * $sumbang_saran)) + (0.8 * $tanggung_jawab)+ ((0.10 * $absensi) 
-				+ (0.5 * $waktu_kerja) + (0.5 * $pelaksanaan_peraturan) + (0.5 * $kehadiran));
+				$score		= ((0.12 * $kualitas) + (0.11 * $kuantitas)) + ((0.12 * $kerjasama) + (0.11 * $kepemimpinan)) + ((0.6 * $kemandirian)
+					+ (0.8 * $qcc) + (0.8 * $sumbang_saran)) + (0.8 * $tanggung_jawab) + ((0.10 * $absensi)
+					+ (0.5 * $waktu_kerja) + (0.5 * $pelaksanaan_peraturan) + (0.5 * $kehadiran));
 				if ($score >= 80) {
 					$rekomendasi = "Baik Sekali";
 				} elseif ($score >= 70) {
@@ -990,7 +986,7 @@ class Web extends CI_Controller
 		}
 	}
 
-	
+
 	//ini laporan penilaian
 	public function laporanpenilaian()
 	{
@@ -1290,239 +1286,239 @@ class Web extends CI_Controller
 		}
 	}
 
- // ini sub kriteria
+	// ini sub kriteria
 
- public function sub_kriteria()
- {
-	 $ceks = $this->session->userdata('kamar@2017');
-	 if (!isset($ceks)) {
-		 redirect('web/login');
-	 } else {
-		 $data['user']  			    = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
-		 $data['v_sub_kriteria']   = $this->Mcrud->get_sub_kriteria('');
-		 $data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
-		 $this->load->view('header', $data);
-		 $this->load->view('dephead/sub_kriteria', $data);
-		 $this->load->view('footer');
+	public function sub_kriteria()
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$data['user']  			    = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
+			$data['v_sub_kriteria']   = $this->Mcrud->get_sub_kriteria('');
+			$data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
+			$this->load->view('header', $data);
+			$this->load->view('dephead/sub_kriteria', $data);
+			$this->load->view('footer');
 
-		 if (isset($_POST['btnsimpan'])) {
-			 $nama_sub_kriteria 			= htmlentities(strip_tags($_POST['nama_sub_kriteria']));
-			 $id_kriteria		= htmlentities(strip_tags($_POST['id_kriteria']));
-			 $nilai_sub_kriteria		= htmlentities(strip_tags($_POST['nilai_sub_kriteria']));
+			if (isset($_POST['btnsimpan'])) {
+				$nama_sub_kriteria 			= htmlentities(strip_tags($_POST['nama_sub_kriteria']));
+				$id_kriteria		= htmlentities(strip_tags($_POST['id_kriteria']));
+				$nilai_sub_kriteria		= htmlentities(strip_tags($_POST['nilai_sub_kriteria']));
 
-			 $data = array(
-				 'nama_sub_kriteria'			=> $nama_sub_kriteria,
-				 'id_kriteria'	=> $id_kriteria,
-				 'nilai_sub_kriteria'	=> $nilai_sub_kriteria
-			 );
-			 $this->Mcrud->save_data('tbl_sub_kriteria', $data);
+				$data = array(
+					'nama_sub_kriteria'			=> $nama_sub_kriteria,
+					'id_kriteria'	=> $id_kriteria,
+					'nilai_sub_kriteria'	=> $nilai_sub_kriteria
+				);
+				$this->Mcrud->save_data('tbl_sub_kriteria', $data);
 
-			 $this->session->set_flashdata(
-				 'msg',
-				 '
+				$this->session->set_flashdata(
+					'msg',
+					'
 								  <div class="alert alert-success alert-dismissible" role="alert">
 										 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 											 <span aria-hidden="true">&times; &nbsp;</span>
 										 </button>
 										 <strong>Sukses!</strong> sub_kriteria berhasil ditambahkan.
 								  </div>'
-			 );
+				);
 
-			 redirect('web/sub_kriteria');
-		 }
-	 }
- }
+				redirect('web/sub_kriteria');
+			}
+		}
+	}
 
 
- public function sub_kriteria_edit($id = '')
- {
-	 $ceks = $this->session->userdata('kamar@2017');
-	 if (!isset($ceks)) {
-		 redirect('web/login');
-	 } else {
-		 $data['user']  			  = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
-		 $data['v_sub_kriteria']    = $this->Mcrud->get_data_by_pk('tbl_sub_kriteria', 'id_sub_kriteria', $id);
-		 $data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
+	public function sub_kriteria_edit($id = '')
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$data['user']  			  = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
+			$data['v_sub_kriteria']    = $this->Mcrud->get_data_by_pk('tbl_sub_kriteria', 'id_sub_kriteria', $id);
+			$data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
 
-		 if ($data['v_sub_kriteria']->num_rows() == 0) {
-			 redirect('web/sub_kriteria');
-		 } else {
-			 $data['v_sub_kriteria'] = $data['v_sub_kriteria']->row();
-		 }
-		 $this->load->view('header', $data);
-		 $this->load->view('dephead/sub_kriteria_edit', $data);
-		 $this->load->view('footer');
+			if ($data['v_sub_kriteria']->num_rows() == 0) {
+				redirect('web/sub_kriteria');
+			} else {
+				$data['v_sub_kriteria'] = $data['v_sub_kriteria']->row();
+			}
+			$this->load->view('header', $data);
+			$this->load->view('dephead/sub_kriteria_edit', $data);
+			$this->load->view('footer');
 
-		 if (isset($_POST['btnsimpan'])) {
-			$nama_sub_kriteria 			= htmlentities(strip_tags($_POST['nama_sub_kriteria']));
-			$id_kriteria		= htmlentities(strip_tags($_POST['id_kriteria']));
-			$nilai_sub_kriteria		= htmlentities(strip_tags($_POST['nilai_sub_kriteria']));
+			if (isset($_POST['btnsimpan'])) {
+				$nama_sub_kriteria 			= htmlentities(strip_tags($_POST['nama_sub_kriteria']));
+				$id_kriteria		= htmlentities(strip_tags($_POST['id_kriteria']));
+				$nilai_sub_kriteria		= htmlentities(strip_tags($_POST['nilai_sub_kriteria']));
 
-			$data = array(
-				'nama_sub_kriteria'			=> $nama_sub_kriteria,
-				'id_kriteria'	=> $id_kriteria,
-				'nilai_sub_kriteria'	=> $nilai_sub_kriteria
-			 );
-			 $this->Mcrud->update_data('tbl_sub_kriteria', array('id_sub_kriteria' => $id), $data);
+				$data = array(
+					'nama_sub_kriteria'			=> $nama_sub_kriteria,
+					'id_kriteria'	=> $id_kriteria,
+					'nilai_sub_kriteria'	=> $nilai_sub_kriteria
+				);
+				$this->Mcrud->update_data('tbl_sub_kriteria', array('id_sub_kriteria' => $id), $data);
 
-			 $this->session->set_flashdata(
-				 'msg',
-				 '
+				$this->session->set_flashdata(
+					'msg',
+					'
 							  <div class="alert alert-success alert-dismissible" role="alert">
 									 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										 <span aria-hidden="true">&times; &nbsp;</span>
 									 </button>
 									 <strong>Sukses!</strong> sub_kriteria berhasil diubah.
 							  </div>'
-			 );
-			 redirect('web/sub_kriteria');
-		 }
-	 }
- }
+				);
+				redirect('web/sub_kriteria');
+			}
+		}
+	}
 
- public function sub_kriteria_hapus($id = '')
- {
-	 $ceks = $this->session->userdata('kamar@2017');
-	 if (!isset($ceks)) {
-		 redirect('web/login');
-	 } else {
-		 $this->Mcrud->delete_data_by_pk('tbl_sub_kriteria', 'id_sub_kriteria', $id);
+	public function sub_kriteria_hapus($id = '')
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$this->Mcrud->delete_data_by_pk('tbl_sub_kriteria', 'id_sub_kriteria', $id);
 
-		 $this->session->set_flashdata(
-			 'msg',
-			 '
+			$this->session->set_flashdata(
+				'msg',
+				'
 				  <div class="alert alert-success alert-dismissible" role="alert">
 						 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							 <span aria-hidden="true">&times; &nbsp;</span>
 						 </button>
 						 <strong>Sukses!</strong> Sub Kriteria Berhasil Dihapus.
 				  </div>'
-		 );
-		 redirect('web/sub_kriteria');
-	 }
- }
+			);
+			redirect('web/sub_kriteria');
+		}
+	}
 
- 
- // ini nilai profil karyawan
 
- public function nilai_profil_karyawan()
- {
-	 $ceks = $this->session->userdata('kamar@2017');
-	 if (!isset($ceks)) {
-		 redirect('web/login');
-	 } else {
-		 $data['user']  			    = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
-		 $data['v_nilai_profil_karyawan']   = $this->Mcrud->get_nilai_profil_karyawan('');
-		 $data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
-		 $data['v_sub_kriteria']   = $this->Mcrud->get_data('tbl_sub_kriteria');
-		 $this->load->view('header', $data);
-		 $this->load->view('dephead/nilai_profil_karyawan', $data);
-		 $this->load->view('footer');
+	// ini nilai profil karyawan
 
-		 if (isset($_POST['btnsimpan'])) {
-			$nrp 			= htmlentities(strip_tags($_POST['nrp']));
-			$id_sub_kriteria 			= htmlentities(strip_tags($_POST['id_sub_kriteria']));
-			 $id_kriteria		= htmlentities(strip_tags($_POST['id_kriteria']));
-			 $nilai_profil_karyawan		= htmlentities(strip_tags($_POST['nilai_profil_karyawan']));
+	public function nilai_profil_karyawan()
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$data['user']  			    = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
+			$data['v_nilai_profil_karyawan']   = $this->Mcrud->get_nilai_profil_karyawan('');
+			$data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
+			$data['v_sub_kriteria']   = $this->Mcrud->get_data('tbl_sub_kriteria');
+			$this->load->view('header', $data);
+			$this->load->view('dephead/nilai_profil_karyawan', $data);
+			$this->load->view('footer');
 
-			 $data = array(
-				'nrp'			=> $nrp, 
-				'id_sub_kriteria'			=> $id_sub_kriteria,
-				 'id_kriteria'	=> $id_kriteria,
-				 'nilai_profil_karyawan'	=> $nilai_profil_karyawan
-			 );
-			 $this->Mcrud->save_data('tbl_nilai_profil_karyawan', $data);
+			if (isset($_POST['btnsimpan'])) {
+				$nrp 			= htmlentities(strip_tags($_POST['nrp']));
+				$id_sub_kriteria 			= htmlentities(strip_tags($_POST['id_sub_kriteria']));
+				$id_kriteria		= htmlentities(strip_tags($_POST['id_kriteria']));
+				$nilai_profil_karyawan		= htmlentities(strip_tags($_POST['nilai_profil_karyawan']));
 
-			 $this->session->set_flashdata(
-				 'msg',
-				 '
+				$data = array(
+					'nrp'			=> $nrp,
+					'id_sub_kriteria'			=> $id_sub_kriteria,
+					'id_kriteria'	=> $id_kriteria,
+					'nilai_profil_karyawan'	=> $nilai_profil_karyawan
+				);
+				$this->Mcrud->save_data('tbl_nilai_profil_karyawan', $data);
+
+				$this->session->set_flashdata(
+					'msg',
+					'
 								  <div class="alert alert-success alert-dismissible" role="alert">
 										 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 											 <span aria-hidden="true">&times; &nbsp;</span>
 										 </button>
 										 <strong>Sukses!</strong> Nilai Profil Berhasil Ditambahkan.
 								  </div>'
-			 );
+				);
 
-			 redirect('web/nilai_profil_karyawan');
-		 }
-	 }
- }
-
-
- public function nilai_profil_karyawan_edit($id = '')
- {
-	 $ceks = $this->session->userdata('kamar@2017');
-	 if (!isset($ceks)) {
-		 redirect('web/login');
-	 } else {
-		 $data['user']  			  = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
-		 $data['v_nilai_profil_karyawan']    = $this->Mcrud->get_data_by_pk('tbl_nilai_profil_karyawan', 'id_nilai_profil_karyawan', $id);
-		 $data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
-		 $data['v_sub_kriteria']   = $this->Mcrud->get_sub_kriteria('');
-
-		 
+				redirect('web/nilai_profil_karyawan');
+			}
+		}
+	}
 
 
-		 if ($data['v_nilai_profil_karyawan']->num_rows() == 0) {
-			 redirect('web/nilai_profil_karyawan');
-		 } else {
-			 $data['v_nilai_profil_karyawan'] = $data['v_nilai_profil_karyawan']->row();
-		 }
-		 $this->load->view('header', $data);
-		 $this->load->view('dephead/nilai_profil_karyawan_edit', $data);
-		 $this->load->view('footer');
+	public function nilai_profil_karyawan_edit($id = '')
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$data['user']  			  = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
+			$data['v_nilai_profil_karyawan']    = $this->Mcrud->get_data_by_pk('tbl_nilai_profil_karyawan', 'id_nilai_profil_karyawan', $id);
+			$data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
+			$data['v_sub_kriteria']   = $this->Mcrud->get_sub_kriteria('');
 
-		 if (isset($_POST['btnsimpan'])) {
-			$nrp 			= htmlentities(strip_tags($_POST['nrp']));
-			$id_sub_kriteria 			= htmlentities(strip_tags($_POST['id_sub_kriteria']));
-			 $id_kriteria		= htmlentities(strip_tags($_POST['id_kriteria']));
-			 $nilai_profil_karyawan		= htmlentities(strip_tags($_POST['nilai_profil_karyawan']));
 
-			 $data = array(
-				'nrp'			=> $nrp, 
-				'id_sub_kriteria'			=> $id_sub_kriteria,
-				 'id_kriteria'	=> $id_kriteria,
-				 'nilai_profil_karyawan'	=> $nilai_profil_karyawan
-			 );
-			 $this->Mcrud->update_data('tbl_nilai_profil_karyawan', array('id_nilai_profil_karyawan' => $id), $data);
 
-			 $this->session->set_flashdata(
-				 'msg',
-				 '
+
+			if ($data['v_nilai_profil_karyawan']->num_rows() == 0) {
+				redirect('web/nilai_profil_karyawan');
+			} else {
+				$data['v_nilai_profil_karyawan'] = $data['v_nilai_profil_karyawan']->row();
+			}
+			$this->load->view('header', $data);
+			$this->load->view('dephead/nilai_profil_karyawan_edit', $data);
+			$this->load->view('footer');
+
+			if (isset($_POST['btnsimpan'])) {
+				$nrp 			= htmlentities(strip_tags($_POST['nrp']));
+				$id_sub_kriteria 			= htmlentities(strip_tags($_POST['id_sub_kriteria']));
+				$id_kriteria		= htmlentities(strip_tags($_POST['id_kriteria']));
+				$nilai_profil_karyawan		= htmlentities(strip_tags($_POST['nilai_profil_karyawan']));
+
+				$data = array(
+					'nrp'			=> $nrp,
+					'id_sub_kriteria'			=> $id_sub_kriteria,
+					'id_kriteria'	=> $id_kriteria,
+					'nilai_profil_karyawan'	=> $nilai_profil_karyawan
+				);
+				$this->Mcrud->update_data('tbl_nilai_profil_karyawan', array('id_nilai_profil_karyawan' => $id), $data);
+
+				$this->session->set_flashdata(
+					'msg',
+					'
 							  <div class="alert alert-success alert-dismissible" role="alert">
 									 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										 <span aria-hidden="true">&times; &nbsp;</span>
 									 </button>
 									 <strong>Sukses!</strong> Nilai Profil Karyawan Berhasil Diubah.
 							  </div>'
-			 );
-			 redirect('web/nilai_profil_karyawan');
-		 }
-	 }
- }
+				);
+				redirect('web/nilai_profil_karyawan');
+			}
+		}
+	}
 
- public function nilai_profil_karyawan_hapus($id = '')
- {
-	 $ceks = $this->session->userdata('kamar@2017');
-	 if (!isset($ceks)) {
-		 redirect('web/login');
-	 } else {
-		 $this->Mcrud->delete_data_by_pk('tbl_nilai_profil_karyawan', 'id_nilai_profil_karyawan', $id);
+	public function nilai_profil_karyawan_hapus($id = '')
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$this->Mcrud->delete_data_by_pk('tbl_nilai_profil_karyawan', 'id_nilai_profil_karyawan', $id);
 
-		 $this->session->set_flashdata(
-			 'msg',
-			 '
+			$this->session->set_flashdata(
+				'msg',
+				'
 				  <div class="alert alert-success alert-dismissible" role="alert">
 						 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							 <span aria-hidden="true">&times; &nbsp;</span>
 						 </button>
 						 <strong>Sukses!</strong> Nilai Profil Karyawan Berhasil Dihapus.
 				  </div>'
-		 );
-		 redirect('web/nilai_profil_karyawan');
-	 }
- }
+			);
+			redirect('web/nilai_profil_karyawan');
+		}
+	}
 
 	public function realisasiptk()
 	{
@@ -1855,6 +1851,229 @@ class Web extends CI_Controller
 		}
 	}
 
+	// ini analisis
+	public function analisis()
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			if ($this->input->post('button') == '') {
+				$this->load->model('model_kriteria');
+				$tabelkriteria = $this->Model_kriteria->getdata();
+				$this->load->model('model_sub_kriteria');
+				foreach ($tabelkriteria as $rowkriteria) {
+					$tabelsubkriteria[$rowkriteria->id_kriteria] = $this->Model_sub_kriteria->getdata(array('sub_kriteria.id_kriteria' => $rowkriteria->id_kriteria));
+				}
+				$data['v_kriteria'] = $tabelkriteria;
+				$data['user'] = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
+				$data['v_sub_kriteria'] = $tabelsubkriteria;
+				$this->load->view('dephead/analisis', $data);
+				$this->load->view('header', $data);
+				$this->load->view('footer');
+			} else {
+				$html = "";
+				$nilai_profil_standar = array();
+				$total_nilai = array();
+				$nrp = array();
+				$nm_karyawan = array();
+				$jumlah_kriteria_core_factor = array();
+				$jumlah_kriteria_secondary_factor = array();
+				$total_nilai_gap_core_factor = array();
+				$total_nilai_gap_secondary_factor = array();
+				$rata2_nilai_gap_core_factor = array();
+				$rata2_nilai_gap_secondary_factor = array();
+
+				$this->load->model('model_karyawan');
+				$this->load->model('model_kriteria');
+				$this->load->model('model_sub_kriteria');
+				$this->load->model('model_nilai_profil_karyawan');
+
+
+
+				$tabelkriteria = $this->model_kriteria->getdata(array(), "jenis_kriteria asc, id_kriteria asc");
+				$i = 0;
+				foreach ($tabelkriteria as $rowkriteria) {
+					$nilai_profil_standar[$i] = $this->input->post('nilai_profil' . $rowkriteria->id_kriteria);
+					$i++;
+				}
+
+				$tabelkaryawan = $this->model_karyawan->getdata();
+				$i = 0;
+				foreach ($tabelkaryawan as $rowkaryawan) {
+					$nm_karyawan[$i] = $rowkaryawan->nm_karyawan;
+					$nrp[$i] = $rowkaryawan->nrp;
+					$total_nilai[$i] = 0;
+
+					$jumlah_kriteria_core_factor[$i] = 0;
+					$jumlah_kriteria_secondary_factor[$i] = 0;
+					$total_nilai_gap_core_factor[$i] = 0;
+					$total_nilai_gap_secondary_factor[$i] = 0;
+					$rata2_nilai_gap_core_factor[$i] = 0;
+					$rata2_nilai_gap_secondary_factor[$i] = 0;
+
+					$j = 0;
+					$jmlkriteria = count($tabelkriteria);
+
+					foreach ($tabelkriteria as $rowkriteria) {
+						$jenis_kriteria = $rowkriteria->jenis_kriteria;
+
+						$tabelnilaiprofilkaryawan = $this->model_nilai_profil_karyawan->getdata(array('nilai_profil_karyawan.nrp' => $rowkaryawan->nrp, 'nilai_profil_karyawan.id_kriteria' => $rowkriteria->id_kriteria));
+
+						$nilai_profil_karyawan = @$tabelnilaiprofilkaryawan[0]->nilai_profil_karyawan;
+						$gap = $nilai_profil_karyawan - $nilai_profil_standar[$j];
+						$nilai_gap = 0;
+						if ($gap == 0) {
+							$nilai_gap = 5;
+						} else if ($gap == 1) {
+							$nilai_gap = 4.5;
+						} else if ($gap == -1) {
+							$nilai_gap = 4;
+						} else if ($gap == 2) {
+							$nilai_gap = 3.5;
+						} else if ($gap == -2) {
+							$nilai_gap = 3;
+						} else if ($gap == 3) {
+							$nilai_gap = 2.5;
+						} else if ($gap == -3) {
+							$nilai_gap = 2;
+						} else if ($gap == 4) {
+							$nilai_gap = 1.5;
+						} else if ($gap == -4) {
+							$nilai_gap = 1;
+						}
+						if ($jenis_kriteria == 'Core Factor') {
+							$total_nilai_gap_core_factor[$i] = $total_nilai_gap_core_factor[$i] + $nilai_gap;
+							$jumlah_kriteria_core_factor[$i]++;
+						} else {
+							$total_nilai_gap_secondary_factor[$i] = $total_nilai_gap_secondary_factor[$i] + $nilai_gap;
+							$jumlah_kriteria_secondary_factor[$i]++;
+						}
+						$j++;
+					}
+					if ($jumlah_kriteria_core_factor[$i] > 0) {
+						$rata2_nilai_gap_core_factor[$i] = $total_nilai_gap_core_factor[$i] / $jumlah_kriteria_core_factor[$i];
+					}
+					if ($jumlah_kriteria_secondary_factor[$i] > 0) {
+						$rata2_nilai_gap_secondary_factor[$i] = $total_nilai_gap_secondary_factor[$i] / $jumlah_kriteria_secondary_factor[$i];
+					}
+					$total_nilai[$i] = (0.6 * $rata2_nilai_gap_core_factor[$i]) + (0.4 * $rata2_nilai_gap_secondary_factor[$i]);
+					$i++;
+				}
+
+				$html = $html . "<table width=\"700\" border=\"0\" cellspacing=\"1\" cellpadding=\"3\" bgcolor=\"#000099\">";
+				$html = $html . "<tr>";
+				$html = $html . "<td>Nama karyawan</td>";
+				$html = $html . "<td>Kriteria</td>";
+				$html = $html . "<td>Nilai<br/>Profil<br/>karyawan</td>";
+				$html = $html . "<td>Nilai<br/>Profil<br/>Standar</td>";
+				$html = $html . "<td>Gap</td>";
+				$html = $html . "<td>Nilai Gap</td>";
+				$html = $html . "<td>Rata2</td>";
+				$html = $html . "<td>Total Nilai</td>";
+				$html = $html . "</tr>";
+
+				$i = 0;
+				foreach ($tabelkaryawan as $rowkaryawan) {
+					$jmlkriteria = count($tabelkriteria);
+
+					$j = 0;
+					foreach ($tabelkriteria as $rowkriteria) {
+						$html = $html . "<tr>";
+						if ($j == 0) {
+							$html = $html . "<td rowspan=" . $jmlkriteria . ">" . $rowkaryawan->nm_karyawan . "</td>";
+						}
+
+						$html = $html . "<td>" . $rowkriteria->nama_kriteria . " (" . $rowkriteria->jenis_kriteria . ")</td>";
+
+						$jenis_kriteria = $rowkriteria->jenis_kriteria;
+
+						$tabelnilaiprofilkaryawan = $this->model_nilai_profil_karyawan->getdata(array('nilai_profil_karyawan.nrp' => $rowkaryawan->nrp, 'nilai_profil_karyawan.id_kriteria' => $rowkriteria->id_kriteria));
+
+						$nilai_profil_karyawan = $tabelnilaiprofilkaryawan[0]->nilai_profil_karyawan;
+						$html = $html . "<td>" . $tabelnilaiprofilkaryawan[0]->nilai_profil_karyawan . "</td>";
+
+						$html = $html . "<td>" . $nilai_profil_standar[$j] . "</td>";
+
+						$gap = $nilai_profil_karyawan - $nilai_profil_standar[$j];
+						$html = $html . "<td>" . $gap . "</td>";
+
+						$nilai_gap = 0;
+						if ($gap == 0) {
+							$nilai_gap = 5;
+						} else if ($gap == 1) {
+							$nilai_gap = 4.5;
+						} else if ($gap == -1) {
+							$nilai_gap = 4;
+						} else if ($gap == 2) {
+							$nilai_gap = 3.5;
+						} else if ($gap == -2) {
+							$nilai_gap = 3;
+						} else if ($gap == 3) {
+							$nilai_gap = 2.5;
+						} else if ($gap == -3) {
+							$nilai_gap = 2;
+						} else if ($gap == 4) {
+							$nilai_gap = 1.5;
+						} else if ($gap == -4) {
+							$nilai_gap = 1;
+						}
+
+						$html = $html . "<td>" . $nilai_gap . "</td>";
+
+						if ($j == 0) {
+							$html = $html . "<td rowspan=" . $jumlah_kriteria_core_factor[$i] . ">" . $rata2_nilai_gap_core_factor[$i] . "</td>";
+						} else if ($j == $jumlah_kriteria_core_factor[$i]) {
+							$html = $html . "<td rowspan=" . $jumlah_kriteria_secondary_factor[$i] . ">" . $rata2_nilai_gap_secondary_factor[$i] . "</td>";
+						}
+
+						if ($j == 0) {
+							$html = $html . "<td rowspan=" . $jmlkriteria . ">" . $total_nilai[$i] . "</td>";
+						}
+						$html = $html . "</tr>";
+
+						$j++;
+					}
+					$i++;
+				}
+				$html = $html . "</table>";
+
+				$nrp_rangking = array();
+				$nm_karyawan_rangking = array();
+				$total_nilai_rangking = array();
+
+				for ($i = 0; $i < count($nm_karyawan); $i++) {
+					$nrp_rangking[$i] = $nrp[$i];
+					$nm_karyawan_rangking[$i] = $nm_karyawan[$i];
+					$total_nilai_rangking[$i] = $total_nilai[$i];
+				}
+
+				for ($i = 0; $i < count($nm_karyawan); $i++) {
+					for ($j = $i; $j < count($nm_karyawan); $j++) {
+						if ($total_nilai_rangking[$j] > $total_nilai_rangking[$i]) {
+							$tmp_total_nilai = $total_nilai_rangking[$i];
+							$tmp_nm_karyawan = $nm_karyawan_rangking[$i];
+							$tmp_nrp = $nrp_rangking[$i];
+							$total_nilai_rangking[$i] = $total_nilai_rangking[$j];
+							$nm_karyawan_rangking[$i] = $nm_karyawan_rangking[$j];
+							$nrp_rangking[$i] = $nrp_rangking[$j];
+							$total_nilai_rangking[$j] = $tmp_total_nilai;
+							$nm_karyawan_rangking[$j] = $tmp_nm_karyawan;
+							$nrp_rangking[$j] = $tmp_nrp;
+						}
+					}
+				}
+				$data['html'] = $html;
+				$data['nm_karyawan_rangking'] = $nm_karyawan_rangking;
+				$data['total_nilai_rangking'] = $total_nilai_rangking;
+
+				
+				$this->load->view('dephead/analisis', $data);
+			}
+		}
+	}
+
+
 	//ini user admin
 	public function user()
 	{
@@ -2032,9 +2251,6 @@ class Web extends CI_Controller
 			}
 		}
 	}
-
-
-
 
 	
 }

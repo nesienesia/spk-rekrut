@@ -20,9 +20,9 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                     <h5 class="panel-title">
                         <?php
                         if ($ceks->level == "dephead" || $ceks->level == "admin") { ?>
-                            Evaluasi Training
+                            Penilaian Karaywan
                         <?php
-                        } ?> (Department Head)</h5>
+                        } ?> </h5>
                     <div class="heading-elements">
                         <ul class="icons-list">
                             <li><a data-action="collapse"></a></li>

@@ -183,7 +183,7 @@ class Mcrud extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('tbl_sub_kriteria');
-		$this->db->join('tbl_kriteria', 'tbl_kriteria.id_kriteria=tbl_sub_kriteria.id_kriteria');
+		$this->db->join('tbl_kriteria', 'tbl_kriteria.id_kriteria=tbl_sub_kriteria.id_kriteria', 'left');
 		$query = $this->db->get();
 		return $query;
 	}

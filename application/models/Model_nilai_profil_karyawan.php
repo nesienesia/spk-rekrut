@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Model_nilai_profil_individu extends CI_Model {
+class Model_nilai_profil_karyawan extends CI_Model {
 
 	public function getdata($where=array(), $orderby='nilai_profil_karyawan.id_kriteria asc, nilai_profil_karyawan.nrp asc, id_nilai_profil_karyawan asc')
 	{
