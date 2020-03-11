@@ -16,7 +16,6 @@ class Web extends CI_Controller
 			$data['karyawan']  		= $this->Mcrud->get_data('tbl_karyawan');
 
 			$data['v_permintaan']   = $this->Mcrud->get_data('tbl_permintaan');
-			$data['v_realisasiptk']		= $this->Mcrud->get_data_realisasiptk('');
 
 			$data['v_penilaian']	= $this->Mcrud->get_data('tbl_penilaian');
 
@@ -879,7 +878,6 @@ class Web extends CI_Controller
 		} else {
 			$data['user']  			  = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
 			$data['v_penilaian']    = $this->Mcrud->get_data_by_pk('tbl_penilaian', 'id_penilaian', $id);
-			$data['v_realisasi']		= $this->Mcrud->get_data_realisasi('');
 			$data['v_dept']   = $this->Mcrud->get_data('tbl_department');
 
 			if ($data['v_penilaian']->num_rows() == 0) {
@@ -1410,7 +1408,7 @@ class Web extends CI_Controller
 			$data['user']  			    = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
 			$data['v_nilai_profil_karyawan']   = $this->Mcrud->get_nilai_profil_karyawan('');
 			$data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
-			$data['v_sub_kriteria']   = $this->Mcrud->get_data('tbl_sub_kriteria');
+			$data['v_sub_kriteria']   = $this->Mcrud->get_sub_kriteria('');
 			$this->load->view('header', $data);
 			$this->load->view('dephead/nilai_profil_karyawan', $data);
 			$this->load->view('footer');
@@ -1520,131 +1518,7 @@ class Web extends CI_Controller
 		}
 	}
 
-	public function realisasiptk()
-	{
-		$ceks = $this->session->userdata('kamar@2017');
-		if (!isset($ceks)) {
-			redirect('web/login');
-		} else {
-			$data['user']  			    = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
-			$data['v_permintaan']   = $this->Mcrud->get_data('tbl_permintaan');
-			$data['v_realisasiptk']		= $this->Mcrud->get_data_realisasiptk('');
-			$data['v_persetujuan']		= $this->Mcrud->get_data_persetujuanptk();
-
-			$this->load->view('header', $data);
-			$this->load->view('hrd/realisasiptk', $data);
-			$this->load->view('footer');
-
-			if (isset($_POST['btnsimpan'])) {
-
-				$kd_persetujuanptk = htmlentities(strip_tags($_POST['kd_persetujuanptk']));
-				$mengetahui_ptk = htmlentities(strip_tags($_POST['mengetahui_ptk']));
-				$nama_ptk = htmlentities(strip_tags($_POST['nama_ptk']));
-				$tgl_ptk = $_POST['tgl_ptk'];
-				$ket_ptk = htmlentities(strip_tags($_POST['ket_ptk']));
-				$pj_ptk = htmlentities(strip_tags($_POST['pj_ptk']));
-
-				$data = array(
-
-					'kd_persetujuanptk'					=> $kd_persetujuanptk,
-					'mengetahui_ptk'				  => $mengetahui_ptk,
-					'nama_ptk'				  => $nama_ptk,
-					'tgl_ptk'				=> $tgl_ptk,
-					'ket_ptk'			=> $ket_ptk,
-					'pj_ptk'							=> $pj_ptk
-				);
-				$this->Mcrud->save_data('tbl_realisasiptk', $data);
-
-				$this->session->set_flashdata(
-					'msg',
-					'
-										 <div class="alert alert-success alert-dismissible" role="alert">
-												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-													<span aria-hidden="true">&times; &nbsp;</span>
-												</button>
-												<strong>Sukses!</strong> Realisasi berhasil ditambahkan.
-										 </div>'
-				);
-
-				redirect('web/realisasiptk');
-			}
-		}
-	}
-
-
-	public function realisasiptk_edit($id = '')
-	{
-		$ceks = $this->session->userdata('kamar@2017');
-		if (!isset($ceks)) {
-			redirect('web/login');
-		} else {
-			$data['user']  			   = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
-			$data['v_permintaan']  = $this->Mcrud->get_data('tbl_permintaan');
-			$data['v_realisasiptk']    = $this->Mcrud->get_data_by_pk('tbl_realisasiptk', 'id_realisasiptk', $id);
-
-			if ($data['v_realisasiptk']->num_rows() == 0) {
-				redirect('web/realisasiptk');
-			} else {
-				$data['v_realisasiptk'] = $data['v_realisasiptk']->row();
-			}
-			$this->load->view('header', $data);
-			$this->load->view('hrd/realisasiptk_edit', $data);
-			$this->load->view('footer');
-
-			if (isset($_POST['btnsimpan'])) {
-				$kd_persetujuanptk = htmlentities(strip_tags($_POST['kd_persetujuanptk']));
-				$mengetahui_ptk = htmlentities(strip_tags($_POST['mengetahui_ptk']));
-				$nama_ptk = htmlentities(strip_tags($_POST['nama_ptk']));
-				$tgl_ptk = $_POST['tgl_ptk'];
-				$ket_ptk = htmlentities(strip_tags($_POST['ket_ptk']));
-				$pj_ptk = htmlentities(strip_tags($_POST['pj_ptk']));
-
-				$data = array(
-					'kd_persetujuanptk'					=> $kd_persetujuanptk,
-					'mengetahui_ptk'				  => $mengetahui_ptk,
-					'nama_ptk'				  => $nama_ptk,
-					'tgl_ptk'				=> $tgl_ptk,
-					'ket_ptk'			=> $ket_ptk,
-					'pj_ptk'							=> $pj_ptk
-				);
-				$this->Mcrud->update_data('tbl_realisasiptk', array('id_realisasiptk' => $id), $data);
-
-				$this->session->set_flashdata(
-					'msg',
-					'
-									 <div class="alert alert-success alert-dismissible" role="alert">
-											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-												<span aria-hidden="true">&times; &nbsp;</span>
-											</button>
-											<strong>Sukses!</strong> Realisasi berhasil diubah.
-									 </div>'
-				);
-				redirect('web/realisasiptk');
-			}
-		}
-	}
-
-	public function realisasiptk_hapus($id = '')
-	{
-		$ceks = $this->session->userdata('kamar@2017');
-		if (!isset($ceks)) {
-			redirect('web/login');
-		} else {
-			$this->Mcrud->delete_data_by_pk('tbl_realisasiptk', 'id_realisasiptk', $id);
-
-			$this->session->set_flashdata(
-				'msg',
-				'
-						 <div class="alert alert-success alert-dismissible" role="alert">
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">&times; &nbsp;</span>
-								</button>
-								<strong>Sukses!</strong> Realisasi berhasil dihapus.
-						 </div>'
-			);
-			redirect('web/realisasiptk');
-		}
-	}
+	
 
 
 	public function upload()
@@ -1860,16 +1734,16 @@ class Web extends CI_Controller
 		} else {
 			if ($this->input->post('button') == '') {
 				$this->load->model('model_kriteria');
-				$tabelkriteria = $this->Model_kriteria->getdata();
+				$tabelkriteria = $this->model_kriteria->getdata();
 				$this->load->model('model_sub_kriteria');
 				foreach ($tabelkriteria as $rowkriteria) {
-					$tabelsubkriteria[$rowkriteria->id_kriteria] = $this->Model_sub_kriteria->getdata(array('sub_kriteria.id_kriteria' => $rowkriteria->id_kriteria));
+					$tabelsubkriteria[$rowkriteria->id_kriteria] = $this->model_sub_kriteria->getdata(array('sub_kriteria.id_kriteria' => $rowkriteria->id_kriteria));
 				}
 				$data['v_kriteria'] = $tabelkriteria;
 				$data['user'] = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
 				$data['v_sub_kriteria'] = $tabelsubkriteria;
-				$this->load->view('dephead/analisis', $data);
 				$this->load->view('header', $data);
+				$this->load->view('dephead/analisis', $data);
 				$this->load->view('footer');
 			} else {
 				$html = "";
@@ -1961,8 +1835,9 @@ class Web extends CI_Controller
 					$i++;
 				}
 
-				$html = $html . "<table width=\"700\" border=\"0\" cellspacing=\"1\" cellpadding=\"3\" bgcolor=\"#000099\">";
-				$html = $html . "<tr>";
+				
+				$html = $html . "<table border=\"1\" width=\"100%\">";
+				$html = $html . "<thead>";
 				$html = $html . "<td>Nama karyawan</td>";
 				$html = $html . "<td>Kriteria</td>";
 				$html = $html . "<td>Nilai<br/>Profil<br/>karyawan</td>";
@@ -1989,11 +1864,11 @@ class Web extends CI_Controller
 						$jenis_kriteria = $rowkriteria->jenis_kriteria;
 
 						$tabelnilaiprofilkaryawan = $this->model_nilai_profil_karyawan->getdata(array('nilai_profil_karyawan.nrp' => $rowkaryawan->nrp, 'nilai_profil_karyawan.id_kriteria' => $rowkriteria->id_kriteria));
-
+						// var_dump($tabelnilaiprofilkaryawan);
 						$nilai_profil_karyawan = $tabelnilaiprofilkaryawan[0]->nilai_profil_karyawan;
 						$html = $html . "<td>" . $tabelnilaiprofilkaryawan[0]->nilai_profil_karyawan . "</td>";
 
-						$html = $html . "<td>" . $nilai_profil_standar[$j] . "</td>";
+						$html .= "<td>" . $nilai_profil_standar[$j] . "</td>";
 
 						$gap = $nilai_profil_karyawan - $nilai_profil_standar[$j];
 						$html = $html . "<td>" . $gap . "</td>";
@@ -2068,7 +1943,10 @@ class Web extends CI_Controller
 				$data['total_nilai_rangking'] = $total_nilai_rangking;
 
 				
+				//$this->load->view('dephead/analisis', $data);
+				$this->load->view('header', $data);
 				$this->load->view('dephead/analisis', $data);
+				$this->load->view('footer');
 			}
 		}
 	}

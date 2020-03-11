@@ -2,7 +2,7 @@
 $ceks = $this->session->userdata('kamar@2017');
 $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
 
-//var_dump($v_nilai_profil_karyawan->result_array());exit;
+var_dump($v_nilai_profil_karyawan->result_array());exit;
 //var_dump($this->session->userdata());exit;
 //var_dump($this->_ci_cached_vars);exit;
 ?>
@@ -42,57 +42,44 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
               <div class="form-group">
                   <label class="control-label col-lg-2">NRP *</label>
                   <div class="col-lg-10">
-                    <input type="text" name="nrp" class="form-control" value="" required maxlength="5" placeholder="NRP">
+                    <select class="form-control" name="nrp" onchange="changeValue(this.value)" autofocus>
+                      <option value="">Pilih Karyawan</option>
+                      <?php
+                        $jsArray = "var dtKamar = new Array();\n";
+                        foreach ($v_nilai_profil_karyawan->result() as $baris) {
+                          echo '<option value="' . $baris->nrp . '">' . "$baris->nm_karyawan" . '</option>';
+                          $jsArray .= "dtKamar['" . $baris->nrp . "'] = {
+                                        nrp:'" . addslashes($baris->nrp) . "',
+                                        id_kriteria:'" . addslashes($baris->id_kriteria) . "',
+                                        id_sub_kriteria:'" . addslashes($baris->id_sub_kriteria) . "',
+                                        nilai_profil_karyawan:'" . addslashes($baris->nilai_profil_karyawan) . "'
+                                      };\n";
+                        } ?>
+                    </select>
+                    <script type="text/javascript">
+                      <?php echo $jsArray; ?>
+
+                      function changeValue(id) {
+                        document.getElementById('nrp').value = dtKamar[id].nrp;
+                        document.getElementById('id_kriteria').value = dtKamar[id].id_kriteria;
+                        document.getElementById('id_sub_kriteria').value = dtKamar[id].id_sub_kriteria;
+                        document.getElementById('id_sub_kriteria').value = dtKamar[id].id_sub_kriteria;
+                      };
+                    </script>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-lg-2">Nama Kriteria *</label>
                   <div class="col-lg-10">
-                    <select class="form-control" name="id_kriteria" onchange="changeValue(this.value)" autofocus>
-                      <option value="">Pilih Kriteria</option>
-                      <?php
-                        $jsArray = "var dtKamar = new Array();\n";
-                        foreach ($v_kriteria->result() as $baris) {
-
-                          echo '<option value="' . $baris->id_kriteria . '">' . "$baris->nama_kriteria" . '</option>';
-                          $jsArray .= "dtKamar['" . $baris->id_kriteria . "'] = {
-                                        id_kriteria:'" . addslashes($baris->id_kriteria) . "'
-                                      };\n";
-                        } ?>
-                    </select>
-                    <script type="text/javascript">
-                      <?php echo $jsArray; ?>
-
-                      function changeValue(id) {
-                        document.getElementById('id_kriteria').value = dtKamar[id].id_kriteria;
-                      };
-                    </script>
+                  
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-lg-2">Nama Sub Kriteria *</label>
                   <div class="col-lg-10">
-                    <select class="form-control" name="id_kriteria" onchange="changeValue(this.value)" autofocus>
-                      <option value="">Pilih Sub Kriteria</option>
-                      <?php
-                        $jsArray = "var dtKamar = new Array();\n";
-                        foreach ($v_sub_kriteria->result() as $baris) {
-
-                          echo '<option value="' . $baris->id_sub_kriteria . '">' . "$baris->nama_sub_kriteria" . '</option>';
-                          $jsArray .= "dtKamar['" . $baris->id_sub_kriteria . "'] = {
-                                        id_sub_kriteria:'" . addslashes($baris->id_sub_kriteria) . "'
-                                      };\n";
-                        } ?>
-                    </select>
-                    <script type="text/javascript">
-                      <?php echo $jsArray; ?>
-
-                      function changeValue(id) {
-                        document.getElementById('id_sub_kriteria').value = dtKamar[id].id_sub_kriteria;
-                      };
-                    </script>
+                   
                   </div>
                 </div>
 

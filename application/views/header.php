@@ -3,11 +3,11 @@
 //$nama   = $cek[0]->username;
 //$level  = $cek[0]->level;
 //$dept  = $cek[0]->dept;
+//var_dump($this->session->userdata());exit;
+
 
 $ceks = $this->session->userdata('kamar@2017');
 $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
-
-//var_dump($this->session->userdata());exit;
 
 $menu 		= strtolower($this->uri->segment(1));
 $sub_menu = strtolower($this->uri->segment(2));

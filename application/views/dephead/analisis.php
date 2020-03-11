@@ -18,7 +18,7 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                 <div class="panel-heading">
                     <h5 class="panel-title">
                         <?php
-                        if ($ceks->level == "dephead" || $ceks->level == "admin") { ?>
+                        if ($ceks->level == "hrd" || $ceks->level == "admin") { ?>
                             Analisis SPK Profile Matching
                         <?php
                         } ?> </h5>
@@ -34,7 +34,7 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                     echo $this->session->flashdata('msg');
                     ?>
                     <?php
-                    if ($ceks->level == "dephead" || $ceks->level == "admin") { ?>
+                    if ($ceks->level == "hrd" || $ceks->level == "admin") { ?>
                         <?php
                         if ($this->input->post('button') == '') {
                         ?>
@@ -46,9 +46,9 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                         foreach ($v_kriteria as $baris) {
                                         ?>
                                             <div class="form-group">
-                                                <label class="control-label col-lg-6"><?php echo $baris->nama_kriteria; ?></label>
-                                                <div class="col-lg-6">
-                                                    <select name="nilai_profil<?php echo $baris->id_kriteria; ?>" id="nilai_profil<?php echo $baris->id_kriteria; ?>" class="form-control" onchange="changeValue(this.value)" autofocus>
+                                                <label class="control-label col-lg-3"><?php echo $baris->nama_kriteria; ?></label>
+                                                <div class="col-lg-9">
+                                                    <select name="nilai_profil<?php echo $baris->id_kriteria; ?>" id="nilai_profil<?php echo $baris->id_kriteria; ?>" class="form-control" onchange="changeValue(this.value)" autofocus required>
                                                         <option value="">Pilih Nilai Sub Kriteria</option>
                                                         <?php
                                                         foreach ($v_sub_kriteria[$baris->id_kriteria] as $baris2) {
@@ -67,17 +67,13 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                 </div>
                                 <br>
                                 <hr>
-                                <input type="submit" name="button" value="Proses" class="btn btn-primary" style="float:right;"/>
-                                
-
+                                <input type="submit" name="button" value="Proses" class="btn btn-primary" style="float:right;" />
                             </form>
                 </div>
                 <br>
-                <?php
-                }
-                else
-                {
-                ?>
+            <?php
+                        } else {
+            ?>
                 <div id="perhitungan" style="display:none;">
                     <br />
                     <?php
@@ -86,34 +82,36 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                     <br />
                 </div>
                 <br />
-                <input type="button" value="Perhitungan" onclick="document.getElementById('perhitungan').style.display='block';" class="btn btn-primary" style="float:right;" />
-
+                
                 <br />
                 <br />
-                Hasil Analisa Menggunakan Sistem Pendukung Keputusan (SPK) Metode Profile Matching<br />
+                <h6>Hasil Analisa Menggunakan Sistem Pendukung Keputusan (SPK) Metode Profile Matching</h6><br />
                 <br />
                 <div class="table-responsive">
-      <table class="table datatable-basic" width="100%">
-        <thead>
-                        <td>Rangking</td>
-                        <td>Nama Individu</td>
-                        <td>Nilai Profile Matching</td>
-                    </thead>
-                    <?php
+                    <table class="table datatable-basic" width="100%">
+                        <thead>
+                            <td>Rangking</td>
+                            <td>Nama Individu</td>
+                            <td>Nilai Profile Matching</td>
+                        </thead>
+                        <?php
                             for ($i = 0; $i < count($nm_karyawan_rangking); $i++) {
-                    ?>
-                        <tbody>
-                            <td><?php echo ($i + 1); ?></td>
-                            <td><?php echo $nm_karyawan_rangking[$i]; ?></td>
-                            <td><?php echo $total_nilai_rangking[$i]; ?></td>
-                        </tbody>
-                    <?php
+                        ?>
+                            <tbody>
+                                <td><?php echo ($i + 1); ?></td>
+                                <td><?php echo $nm_karyawan_rangking[$i]; ?></td>
+                                <td><?php echo $total_nilai_rangking[$i]; ?></td>
+                            </tbody>
+                        <?php
                             }
-                    ?>
-                </table>
-                        </div>
-                Hasil Kecocokan Terbesar Didapatkan oleh Individu dengan Nama = <?php echo $nm_karyawan_rangking[0]; ?> dengan Nilai Profile Matching Terbesar = <?php echo $total_nilai_rangking[0]; ?>
+                        ?>
+                    </table>
+                </div>
+                Hasil Kecocokan Terbesar Didapatkan oleh Karyawan  <strong> <?php echo $nm_karyawan_rangking[0]; ?> </strong> dengan Nilai Profile Matching Terbesar = <?php echo $total_nilai_rangking[0]; ?>
                 <br />
+                
+                <input type="button" value="Perhitungan" onclick="document.getElementById('perhitungan').style.display='block';" class="btn btn-primary" style="float:right;" />
+
             <?php
                         }
             ?>
@@ -121,7 +119,6 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
             <hr>
         <?php
                     } ?>
-
 
             </div>
             <!-- /basic datatable -->

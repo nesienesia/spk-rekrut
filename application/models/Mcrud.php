@@ -51,8 +51,6 @@ class Mcrud extends CI_Model
 
 		$this->db->select('*');
 		$this->db->from('tbl_permintaan');
-	//	$this->db->join('tbl_persetujuan_ptk', 'tbl_persetujuan_ptk.id_persetujuan=tbl_realisasi_ptk.id_persetujuan');
-		//$this->db->join('tbl_permintaan', 'tbl_permintaan.id_permintaan=tbl_persetujuan_ptk.id_permintaan');
 		$this->db->join('tbl_department ', 'tbl_department.nm_dep=tbl_permintaan.dept_pemohon');
 		$this->db->where($where);
 		$query = $this->db->get();
@@ -61,17 +59,7 @@ class Mcrud extends CI_Model
 		return $query;
 	}
 
-	public function get_data_by_pk_permintaan($where, $id)
-	{
-		$this->db->select('*');
-		$this->db->from('tbl_realisasi_ptk');
-		$this->db->join('tbl_persetujuan_ptk', 'tbl_persetujuan_ptk.id_persetujuan=tbl_realisasi_ptk.id_persetujuan');
-		$this->db->join('tbl_permintaan', 'tbl_permintaan.id_permintaan=tbl_persetujuan_ptk.id_permintaan');
-		$this->db->where($where, $id);
-		$query = $this->db->get();
-
-		return $query;
-	}
+	
 
 	public function get_data_penilaian($dept = null)
 	{
@@ -96,7 +84,6 @@ class Mcrud extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tbl_penilaian');
 		$this->db->join('tbl_penilaian', 'tbl_penilaian.id_penilaian=tbl_penilaian.id_penilaian');
-		$this->db->join('tbl_realisasi_training', 'tbl_realisasi_training.id_realisasi=tbl_penilaian.id_realisasi');
 		$this->db->join('tbl_karyawan', 'tbl_karyawan.nrp=tbl_permohonan.nrp');
 		$this->db->join('tbl_department d', 'tbl_penilaian.dept=d.nm_dep');
 		$this->db->join('tbl_user u', ' d.id_dep=u.dept');
@@ -105,15 +92,7 @@ class Mcrud extends CI_Model
 		return $query;
 	}
 
-	public function get_data_realisasiptk()
-	{
-		$this->db->select('*');
-		$this->db->from('tbl_realisasi_ptk');
-		$this->db->join('tbl_persetujuan_ptk', 'tbl_persetujuan_ptk.id_persetujuan=tbl_realisasi_ptk.id_persetujuan');
-		$this->db->join('tbl_permintaan', 'tbl_permintaan.id_permintaan=tbl_persetujuan_ptk.id_permintaan');
-		$query = $this->db->get();
-		return $query;
-	}
+
 
 
 	public function upload_file($filename)
@@ -169,9 +148,7 @@ class Mcrud extends CI_Model
 	public function get_penilaian()
 	{
 		$this->db->select('*');
-		$this->db->from('tbl_penilaian ed');
-		$this->db->join('tbl_realisasi_training r', 'r.id_realisasi=ed.id_realisasi');
-		$this->db->join('tbl_permohonan p', 'p.id_permohonan=r.id_permohonan');
+		$this->db->from('tbl_penilaian p');
 		$this->db->join('tbl_karyawan k', 'k.nrp=p.nrp');
 		$this->db->join('tbl_department d', 'ed.dept=d.nm_dep');
 		$this->db->join('tbl_user u', ' d.id_dep=u.dept');
@@ -205,22 +182,10 @@ class Mcrud extends CI_Model
 		$this->db->join('tbl_karyawan', 'tbl_nilai_profil_karyawan.nrp=tbl_karyawan.nrp');
 		$this->db->join('tbl_sub_kriteria', 'tbl_nilai_profil_karyawan.id_sub_kriteria=tbl_sub_kriteria.id_sub_kriteria');
 		$this->db->join('tbl_kriteria', 'tbl_nilai_profil_karyawan.id_kriteria=tbl_kriteria.id_kriteria');
-		
+		$this->db->join('tbl_penilaian', 'tbl_nilai_profil_karyawan.nrp=tbl_penilaian.nrp');
 		$query = $this->db->get();
 		return $query;
 	}
 	
-	public function get_data_permintaann()
-	{
-		
-		$this->db->select('*');
-		$this->db->from('tbl_realisasi_ptk');
-		$this->db->join('tbl_persetujuan_ptk', 'tbl_persetujuan_ptk.id_persetujuan=tbl_realisasi_ptk.id_persetujuan');
-		$this->db->join('tbl_permintaan', 'tbl_permintaan.id_permintaan=tbl_persetujuan_ptk.id_permintaan');
-		$this->db->join('tbl_department ', 'tbl_department.nm_dep=tbl_permintaan.dept_pemohon');
-		
-		$query = $this->db->get();
-		return $query;
-	}
 	
 }
