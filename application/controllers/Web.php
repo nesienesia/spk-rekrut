@@ -1836,7 +1836,7 @@ class Web extends CI_Controller
 				}
 
 				
-				$html = $html . "<table border=\"1\" width=\"100%\">";
+				$html = $html . "<table width=\"100%\" class=\"table table-bordered\">";
 				$html = $html . "<thead>";
 				$html = $html . "<td>Nama karyawan</td>";
 				$html = $html . "<td>Kriteria</td>";

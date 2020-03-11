@@ -76,40 +76,42 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
             ?>
                 <div id="perhitungan" style="display:none;">
                     <br />
+                    <h6>Hasil Analisa Menggunakan Sistem Pendukung Keputusan (SPK) Metode Profile Matching</h6>
+                    <div class="table-responsive">
                     <?php
                             echo $html;
                     ?>
+                    </div>
                     <br />
                 </div>
+                
+                Hasil Kecocokan Terbesar Didapatkan oleh <strong> <?php echo $nm_karyawan_rangking[0]; ?> </strong> dengan Nilai Profile Matching Terbesar = <?php echo $total_nilai_rangking[0]; ?>
                 <br />
                 
-                <br />
-                <br />
-                <h6>Hasil Analisa Menggunakan Sistem Pendukung Keputusan (SPK) Metode Profile Matching</h6><br />
-                <br />
+
                 <div class="table-responsive">
-                    <table class="table datatable-basic" width="100%">
-                        <thead>
+                    <table class="table table-bordered" width="100" >
+                        <thead class="thead-light">
                             <td>Rangking</td>
                             <td>Nama Individu</td>
                             <td>Nilai Profile Matching</td>
                         </thead>
+                        <tbody>
                         <?php
                             for ($i = 0; $i < count($nm_karyawan_rangking); $i++) {
                         ?>
-                            <tbody>
+                            <tr>
                                 <td><?php echo ($i + 1); ?></td>
                                 <td><?php echo $nm_karyawan_rangking[$i]; ?></td>
                                 <td><?php echo $total_nilai_rangking[$i]; ?></td>
-                            </tbody>
+                            </tr>
+                        </tbody>
                         <?php
                             }
                         ?>
                     </table>
                 </div>
-                Hasil Kecocokan Terbesar Didapatkan oleh Karyawan  <strong> <?php echo $nm_karyawan_rangking[0]; ?> </strong> dengan Nilai Profile Matching Terbesar = <?php echo $total_nilai_rangking[0]; ?>
-                <br />
-                
+              
                 <input type="button" value="Perhitungan" onclick="document.getElementById('perhitungan').style.display='block';" class="btn btn-primary" style="float:right;" />
 
             <?php

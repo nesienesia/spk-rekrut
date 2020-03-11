@@ -182,7 +182,7 @@ class Mcrud extends CI_Model
 		$this->db->join('tbl_karyawan', 'tbl_nilai_profil_karyawan.nrp=tbl_karyawan.nrp');
 		$this->db->join('tbl_sub_kriteria', 'tbl_nilai_profil_karyawan.id_sub_kriteria=tbl_sub_kriteria.id_sub_kriteria');
 		$this->db->join('tbl_kriteria', 'tbl_nilai_profil_karyawan.id_kriteria=tbl_kriteria.id_kriteria');
-		$this->db->join('tbl_penilaian', 'tbl_nilai_profil_karyawan.nrp=tbl_penilaian.nrp');
+		//$this->db->join('tbl_penilaian', 'tbl_nilai_profil_karyawan.nrp=tbl_penilaian.nrp');
 		$query = $this->db->get();
 		return $query;
 	}
