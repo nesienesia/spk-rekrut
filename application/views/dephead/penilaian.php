@@ -39,13 +39,13 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                         <form class="form-horizontal" action="" method="post">
                             <div class="col-md-12">
                                 <div class="col-md-12">
-                                <div class="form-group">
+                                    <div class="form-group">
                                         <label class="control-label col-lg-2"><b>NRP *</b></label>
                                         <div class="col-lg-10">
                                             <input type="text" name="nrp" class="form-control" value="" required maxlength="35" placeholder="NRP">
                                         </div>
                                     </div>
-                                  
+
                                     <div class="form-group">
                                         <label class="control-label col-lg-10"><b>1. Kualitas dan Kuantitas Kerja *</b></label>
                                     </div>
@@ -53,13 +53,13 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Kualitas</label>
                                         <div class="col-lg-10">
-                                        <input  type="number" min="1" max="100" name="kualitas" class="form-control" value="" required maxlength="35" placeholder="Score (1-100)">
+                                            <input type="number" min="40" max="90" name="kualitas" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Kuantitas</label>
                                         <div class="col-lg-10">
-                                        <input  type="number" min="1" max="100" name="kuantitas" class="form-control" value="" required maxlength="35" placeholder="Score (1-100)">
+                                            <input type="number" min="40" max="90" name="kuantitas" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
 
@@ -70,13 +70,13 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Kerjasama</label>
                                         <div class="col-lg-10">
-                                            <input  type="number" min="1" max="100" name="kerjasama" class="form-control" value="" required maxlength="35" placeholder="Score (0-100)">
+                                            <input type="number" min="40" max="90" name="kerjasama" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Kepemimpinan</label>
                                         <div class="col-lg-10">
-                                            <input type="number" min="1" max="100"  name="kepemimpinan" class="form-control" value="" required maxlength="35" placeholder="Score (0-100)">
+                                            <input type="number" min="40" max="90" name="kepemimpinan" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
 
@@ -86,19 +86,19 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Kemandirian</label>
                                         <div class="col-lg-10">
-                                            <input  type="number" min="1" max="100" name="kemandirian" class="form-control" value="" required maxlength="35" placeholder="Score (0-100)">
+                                            <input type="number" min="40" max="90" name="kemandirian" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">QCC</label>
                                         <div class="col-lg-10">
-                                            <input type="number" min="1" max="100"  name="qcc" class="form-control" value="" required maxlength="35" placeholder="Score (0-100)">
+                                            <input type="number" min="40" max="90" name="qcc" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Sumbang Saran</label>
                                         <div class="col-lg-10">
-                                            <input type="number" min="1" max="100"  name="sumbang_saran" class="form-control" value="" required maxlength="35" placeholder="Score (0-100)">
+                                            <input type="number" min="40" max="90" name="sumbang_saran" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
 
@@ -107,7 +107,7 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                     </div>
                                     <div class="form-group">
                                         <div class="col-lg-10">
-                                            <input  type="number" min="1" max="100" name="tanggung_jawab" class="form-control" value="" required maxlength="35" placeholder="Score (0-100)">
+                                            <input type="number" min="40" max="90" name="tanggung_jawab" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
 
@@ -117,26 +117,26 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Absensi</label>
                                         <div class="col-lg-10">
-                                            <input  type="number" min="1" max="100" name="absensi" class="form-control" value="" required maxlength="35" placeholder="Score (0-100)">
+                                            <input type="number" min="40" max="90" name="absensi" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Penggunaan Waktu Kerja</label>
                                         <div class="col-lg-10">
-                                            <input type="number" min="1" max="100" name="waktu_kerja" class="form-control" value="" required maxlength="35" placeholder="Score (0-100)">
+                                            <input type="number" min="40" max="90" name="waktu_kerja" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Pelaksanaan Peraturan Perusanaan</label>
                                         <div class="col-lg-10">
-                                            <input type="number" min="1" max="100" name="pelaksanaan_peraturan" class="form-control" value="" required maxlength="35" placeholder="Score (0-100)">
+                                            <input type="number" min="40" max="90" name="pelaksanaan_peraturan" class="form-control" value="" required maxlength="35" placeholder="Score (40-90)">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-lg-2">Kehadiran</label>    
+                                        <label class="control-label col-lg-2">Kehadiran</label>
                                         <div class="col-lg-10">
-                                        <input type="number" min="1" max="100" name="kehadiran" class="form-control" value="" required  placeholder="Score (0-100)">
-                                    </div>
+                                            <input type="number" min="40" max="90" name="kehadiran" class="form-control" value="" required placeholder="Score (40-90)">
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -152,13 +152,13 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                             <select class="form-control" name="dept" onchange="changeValue(this.value)" autofocus>
                                                 <option value="">Pilih Departemen</option>
                                                 <?php
-                                                    $jsArray = "var dtKamar = new Array();\n";
-                                                    foreach ($v_dept->result() as $baris) {
-                                                        echo '<option value="' . $baris->nm_dep . '">' . "$baris->nm_dep" . '</option>';
-                                                        $jsArray .= "dtKamar['" . $baris->nm_dep . "'] = {
+                                                $jsArray = "var dtKamar = new Array();\n";
+                                                foreach ($v_dept->result() as $baris) {
+                                                    echo '<option value="' . $baris->nm_dep . '">' . "$baris->nm_dep" . '</option>';
+                                                    $jsArray .= "dtKamar['" . $baris->nm_dep . "'] = {
                                         nm_dep:'" . addslashes($baris->nm_dep) . "'
                                       };\n";
-                                                    } ?>
+                                                } ?>
                                             </select>
                                             <script type="text/javascript">
                                                 <?php echo $jsArray; ?>
@@ -198,7 +198,7 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
 
                 <hr>
             <?php
-            } ?>
+                    } ?>
 
 
             <div class="table-responsive">
@@ -232,23 +232,166 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                         <?php
                         $no = 1;
                         foreach ($v_penilaian->result() as $baris) {
-                            ?>
+                        ?>
                             <tr>
                                 <td><?php echo $baris->nrp; ?></td>
                                 <td><?php echo $baris->nm_karyawan; ?></td>
 
-                                <td><?php echo $baris->kualitas; ?></td>
-                                <td><?php echo $baris->kuantitas; ?></td>
-                                <td><?php echo $baris->kerjasama; ?></td>
-                                <td><?php echo $baris->kepemimpinan; ?></td>
-                                <td><?php echo $baris->kemandirian; ?></td>
-                                <td><?php echo $baris->qcc; ?></td>
-                                <td><?php echo $baris->sumbang_saran; ?></td>
-                                <td><?php echo $baris->tanggung_jawab; ?></td>
-                                <td><?php echo $baris->absensi; ?></td>
-                                <td><?php echo $baris->waktu_kerja; ?></td>
-                                <td><?php echo $baris->pelaksanaan_peraturan; ?></td>
-                                <td><?php echo $baris->kehadiran; ?></td>
+                                <td> <?php if ($baris->kualitas >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->kualitas >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->kualitas >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->kualitas >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->kualitas >= "40") {
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->kuantitas >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->kuantitas >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->kuantitas >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->kuantitas >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->kuantitas >= "40") {
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->kerjasama >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->kerjasama >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->kerjasama >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->kerjasama >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->kerjasama >= "40") {
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->kepemimpinan >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->kepemimpinan >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->kepemimpinan >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->kepemimpinan >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->kepemimpinan >= "40") {
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->kemandirian >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->kemandirian >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->kemandirian >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->kemandirian >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->kemandirian >= "40") {
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->qcc >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->qcc >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->qcc >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->qcc >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->qcc >= "40") {
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->sumbang_saran >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->sumbang_saran >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->sumbang_saran >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->sumbang_saran >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->sumbang_saran >= "40") {
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->tanggung_jawab >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->tanggung_jawab >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->tanggung_jawab >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->tanggung_jawab >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->tanggung_jawab >= "40"){
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->absensi >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->absensi >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->absensi >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->absensi >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->absensi >= "40"){
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->waktu_kerja >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->waktu_kerja >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->waktu_kerja >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->waktu_kerja >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->waktu_kerja >= "40"){
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->pelaksanaan_peraturan >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->pelaksanaan_peraturan >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->pelaksanaan_peraturan >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->pelaksanaan_peraturan >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->pelaksanaan_peraturan >= "40"){
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
+
+                                <td> <?php if ($baris->kehadiran >= "80") {
+                                            echo 'Sangat Baik';
+                                        } elseif ($baris->kehadiran >= "70") {
+                                            echo 'Baik';
+                                        } elseif ($baris->kehadiran >= "60") {
+                                            echo 'Cukup';
+                                        } elseif ($baris->kehadiran >= "50") {
+                                            echo 'Kurang';
+                                        } elseif ($baris->kehadiran >= "40"){
+                                            echo 'Sangat Kurang';
+                                        }
+                                        ?></td>
 
                                 <td><?php echo $baris->pj_dephead; ?></td>
                                 <td><?php echo $baris->nm_dep; ?></td>
@@ -256,13 +399,13 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                 <td><?php echo $baris->catatan; ?></td>
 
                                 <?php
-                                    if ($ceks->level == "dephead" || $ceks->level == "admin") { ?>
+                                if ($ceks->level == "dephead" || $ceks->level == "admin") { ?>
                                     <td>
                                         <a href="web/penilaian_edit/<?php echo $baris->id_penilaian; ?>" title="Edit"><span class="icon-pencil"></span></a> &nbsp;
                                         <a href="web/penilaian_hapus/<?php echo $baris->id_penilaian; ?>" title="Hapus" onclick="return confirm('Apakah Anda yakin?')"><span class="icon-trash"></span></a>
                                     </td>
                                 <?php
-                                    } ?>
+                                } ?>
                             </tr>
                         <?php
                             $no++;

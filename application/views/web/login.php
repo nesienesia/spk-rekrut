@@ -42,7 +42,6 @@
 <!-- /simple login form -->
 <center>
 	<pre>
-	Sistem Informasi Sumber Daya Manusia ini dapat melakukan Proses Permohonan Training, Evaluasi Training, Permintaan Tenaga Kerja dan Penugasan Karyawan.
-	             Dalam prosesnya terdapat SOP yang mendukung penggunaan Sistem Informasi Sumber Daya Manusia ini.
+	SELAMAT DATANG DI SISTEM PENDUKUNG KEPUTUSAN REKRUTMEN INTERNAL PT FSCM MANUFACTURING INDONESIA DENGAN METODE PROFILE MATCHING
 	</pre>
 </center>

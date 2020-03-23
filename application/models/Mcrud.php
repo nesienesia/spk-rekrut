@@ -21,7 +21,7 @@ class Mcrud extends CI_Model
 		return $query;
 	}
 
-	
+
 	public function save_data($tbl, $data)
 	{
 		$this->db->insert($tbl, $data);
@@ -41,9 +41,7 @@ class Mcrud extends CI_Model
 	}
 
 
-
-	
-//$dept = null
+	//$dept = null
 	public function get_data_permintaan($dept = null)
 	{
 		$cekdept = $dept == 5 ? NULL : $dept;
@@ -51,7 +49,7 @@ class Mcrud extends CI_Model
 
 		$this->db->select('*');
 		$this->db->from('tbl_permintaan');
-		$this->db->join('tbl_department ', 'tbl_department.nm_dep=tbl_permintaan.dept_pemohon');
+		$this->db->join('tbl_department ', 'tbl_department.nm_dep=tbl_permintaan.departemen');
 		$this->db->where($where);
 		$query = $this->db->get();
 		//var_dump($this->db->last_query());
@@ -59,7 +57,7 @@ class Mcrud extends CI_Model
 		return $query;
 	}
 
-	
+
 
 	public function get_data_penilaian($dept = null)
 	{
@@ -136,6 +134,16 @@ class Mcrud extends CI_Model
 		return $query;
 	}
 
+	public function get_data_realisasiptk()
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_realisasi_ptk');
+		$this->db->join('tbl_persetujuan_ptk', 'tbl_persetujuan_ptk.id_persetujuan=tbl_realisasi_ptk.id_persetujuan');
+		$this->db->join('tbl_permintaan', 'tbl_permintaan.id_permintaan=tbl_persetujuan_ptk.id_permintaan');
+		$query = $this->db->get();
+		return $query;
+	}
+
 	public function get_data_persetujuanptk()
 	{
 		$this->db->select('*');
@@ -150,7 +158,7 @@ class Mcrud extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tbl_penilaian p');
 		$this->db->join('tbl_karyawan k', 'k.nrp=p.nrp');
-		$this->db->join('tbl_department d', 'ed.dept=d.nm_dep');
+		$this->db->join('tbl_department d', 'p.dept=d.nm_dep');
 		$this->db->join('tbl_user u', ' d.id_dep=u.dept');
 		$query = $this->db->get();
 		return $query;
@@ -186,6 +194,15 @@ class Mcrud extends CI_Model
 		$query = $this->db->get();
 		return $query;
 	}
-	
-	
+
+	public function get_data_permintaann()
+	{
+
+		$this->db->select('*');
+		$this->db->from('tbl_permintaan');
+		$this->db->join('tbl_department ', 'tbl_department.nm_dep=tbl_permintaan.departemen');
+
+		$query = $this->db->get();
+		return $query;
+	}
 }

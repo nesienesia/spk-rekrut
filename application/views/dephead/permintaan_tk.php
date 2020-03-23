@@ -68,14 +68,14 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Seksi *</label>
                                         <div class="col-lg-10">
-                                            <input type="text" name="seksi" class="form-control" value="" required maxlength="5" placeholder="Seksi">
+                                            <input type="text" name="seksi" class="form-control" value="" required maxlength="35" placeholder="Seksi">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Jabatan *</label>
                                         <div class="col-lg-10">
-                                            <input type="text" name="jabatan" class="form-control" value="" required maxlength="5" placeholder="Jabatan">
+                                            <input type="text" name="jabatan" class="form-control" value="" required maxlength="35" placeholder="Jabatan">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -158,16 +158,16 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-lg-2">Lama Pengalaman</label>
+                                        <label class="control-label col-lg-2">Bidang Pengalaman</label>
                                         <div class="col-lg-10">
-                                            <input type="text" name="lama_pengalaman" class="form-control" value="" maxlength="35" placeholder="Kosongkan jika Fresh Graduate">
+                                            <input type="text" name="bidang_pengalaman" class="form-control" value="" maxlength="35" placeholder="Kosongkan jika Fresh Graduate">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-lg-2">Bidang Pengalaman</label>
+                                        <label class="control-label col-lg-2">Lama Pengalaman</label>
                                         <div class="col-lg-10">
-                                            <input type="number" min="1" max="80" class="form-control" name="bidang_pengalaman" required="required" placeholder="Usia">
+                                        <input type="text" name="lama_pengalaman" class="form-control" value="" maxlength="35" placeholder="Kosongkan jika Fresh Graduate">
                                         </div>
                                     </div>
 
@@ -222,7 +222,7 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Jumlah Bawahan *</label>
                                         <div class="col-lg-10">
-                                            <input type="number" min="1" max="100" class="form-control" name="jumlah_bawahan" required="required" placeholder="Usia">
+                                            <input type="number" min="0" max="100" class="form-control" name="jml_bawahan" required="required" placeholder="0 jika tidak ada">
                                         </div>
                                     </div>
 
@@ -246,31 +246,6 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                             <input type="text" name="pemohon_ptk" class="form-control" value="" required maxlength="35" placeholder="Nama Pemohon">
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2">Departemen Pemohon *</label>
-                                        <div class="col-lg-10">
-                                            <select class="form-control" name="dept_pemohon_ptk" onchange="changeValue(this.value)" autofocus>
-                                                <option value="">Pilih Deparetmen</option>
-                                                <?php
-                                                $jsArray = "var dtKamar = new Array();\n";
-                                                foreach ($v_dept->result() as $baris) {
-                                                    echo '<option value="' . $baris->nm_dep . '">' . "$baris->nm_dep" . '</option>';
-                                                    $jsArray .= "dtKamar['" . $baris->nm_dep . "'] = {
-                                        nm_dep:'" . addslashes($baris->nm_dep) . "'
-                                      };\n";
-                                                } ?>
-                                            </select>
-                                            <script type="text/javascript">
-                                                <?php echo $jsArray; ?>
-
-                                                function changeValue(id) {
-                                                    document.getElementById('nm_dep').value = dtKamar[id].nm_dep;
-                                                };
-                                            </script>
-                                        </div>
-                                    </div>
-
 
                                     <div class="form-group">
                                         <label class="control-label col-lg-2">Tanggal Permintaan *</label>
@@ -299,7 +274,10 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                 <table class="table datatable-basic" width="100%">
                     <thead>
                         <th width="10">No</th>
-                        <th>Divisi</th>
+                        <th>Departemen</th>
+                        <th>Seksi</th>
+                        <th>Jabatan</th>
+                        <th>Golongan</th>
                         <th>Jumlah</th>
                         <th>Sumber Tenaga</th>
                         <th>Due Date</th>
@@ -309,18 +287,20 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
 
                         <th>Pendidikan</th>
                         <th>Pengalaman</th>
+                        <th>Lama Pengalaman</th>
+
                         <th>Status</th>
+                        <th>Lama Kontrak</th>
                         <th>Jenis Kelamin</th>
+                        <th>Batas Usia</th>
 
                         <th>Bertanggung Jawab</th>
-                        <th>Bawahan</th>
                         <th>Jumlah Bawahan</th>
                         <th>Tugas Pokok</th>
 
                         <th>NRP Pemohon</th>
                         <th>Nama Pemohon</th>
-                        <th>Department Pemohon</th>
-                        <th>Kota</th>
+
                         <th>Tanggal Permintaan</th>
                         <?php
                         if ($ceks->level == "dephead" || $ceks->level == "admin"  || $ceks->level == "hrd") { ?>
@@ -335,6 +315,10 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                         ?>
                             <tr>
                                 <td><?php echo $baris->id_permintaan; ?></td>
+                                <td><?php echo $baris->departemen; ?></td>
+                                <td><?php echo $baris->seksi; ?></td>
+                                <td><?php echo $baris->jabatan; ?></td>
+                                <td><?php echo $baris->golongan; ?></td>
                                 <td><?php echo $baris->jumlah; ?></td>
                                 <td><?php echo $baris->sumber_tenaga; ?></td>
                                 <td><?php echo date('d F Y', strtotime($baris->due_date)); ?></td>
@@ -344,18 +328,18 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
 
                                 <td><?php echo $baris->pendidikan; ?></td>
                                 <td><?php echo $baris->pengalaman; ?></td>
+                                <td><?php echo $baris->lama_pengalaman; ?></td>
                                 <td><?php echo $baris->status; ?></td>
+                                <td><?php echo $baris->status_kontrak; ?></td>
+                                <td><?php echo $baris->usia; ?></td>
                                 <td><?php echo $baris->jk; ?></td>
 
                                 <td><?php echo $baris->bertanggungjawab; ?></td>
-                                <td><?php echo $baris->bawahan; ?></td>
                                 <td><?php echo $baris->jml_bawahan; ?></td>
                                 <td><?php echo $baris->tgs_pokok; ?></td>
 
                                 <td><?php echo $baris->nrp_pemohon_ptk; ?></td>
                                 <td><?php echo $baris->pemohon_ptk; ?></td>
-                                <td><?php echo $baris->dept_pemohon_ptk; ?></td>
-                                <td><?php echo $baris->kota; ?></td>
                                 <td><?php echo date('d F Y', strtotime($baris->tgl_permintaan)); ?></td>
                                 <?php
                                 if ($ceks->level == "dephead" || $ceks->level == "admin") { ?>

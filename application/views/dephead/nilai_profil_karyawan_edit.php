@@ -9,7 +9,7 @@
       <!-- Basic datatable -->
       <div class="panel panel-flat">
         <div class="panel-heading">
-          <h5 class="panel-title">Edit Sub Kriteria</h5>
+          <h5 class="panel-title">Edit Nilai Profil Karyawan</h5>
           <div class="heading-elements">
             <ul class="icons-list">
               <li><a data-action="collapse"></a></li>

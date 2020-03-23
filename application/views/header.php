@@ -61,11 +61,14 @@ $sub_menu = strtolower($this->uri->segment(2));
 	if (
 		$sub_menu == "karyawan" or $sub_menu == "karyawan_edit"
 		or $sub_menu == "permintaan_tk" or $sub_menu == "permintaan_tk_edit"
+		or $sub_menu == "persetujuanptk" or $sub_menu == "persetujuanptk_edit"
+		or $sub_menu == "realisasiptk" or $sub_menu == "realisasiptk_edit"
 		or $sub_menu == "penilaian" or $sub_menu == "penilaian_edit"
-		or $sub_menu == "kriteria" or $sub_menu == "kriteria_edit"
-		or $sub_menu == "sub_kriteria" or $sub_menu == "sub_kriteria_edit"
+		//or $sub_menu == "kriteria" or $sub_menu == "kriteria_edit"
+		//or $sub_menu == "sub_kriteria" or $sub_menu == "sub_kriteria_edit"
 		or $sub_menu == "nilai_profil_karyawan" or $sub_menu == "nilai_profil_karyawan_edit"
 		or $sub_menu == "user" or $sub_menu == "user_edit" or $sub_menu == "analisis"
+		or $sub_menu == "laporanpermintaan"
 	) { ?>
 		<!-- Theme JS files -->
 		<script type="text/javascript" src="assets/js/plugins/tables/datatables/datatables.min.js"></script>
@@ -170,42 +173,57 @@ $sub_menu = strtolower($this->uri->segment(2));
 										<li class="<?php if ($sub_menu == "permintaan_tk" or $sub_menu == "permintaan_tk_edit") {
 														echo 'active';
 													} ?>"><a href="web/permintaan_tk">Form Permintaan Tenaga Kerja</a></li>
+										<?php
+										if ($ceks->level == "admin" || $ceks->level == "hrd") { ?>
+											<li class="<?php if ($sub_menu == "persetujuanptk" or $sub_menu == "persetujuanptk_edit") {
+															echo 'active';
+														} ?>"><a href="web/persetujuanptk">Persetujuan</a></li>
+											<li class="<?php if ($sub_menu == "realisasiptk" or $sub_menu == "realisasiptk_edit") {
+															echo 'active';
+														} ?>"><a href="web/realisasiptk">Realisasi</a></li>
+										<?php
+										}  ?>
 									</ul>
 								</li>
+
+
+								<li class="<?php if (
+												$sub_menu == "penilaian" or $sub_menu == "penilaian_edit"
+											) {
+												echo 'active';
+											} ?>">
+									<a href="#"><i class="icon-portfolio"></i> <span>Penilaian Karyawan</span></a>
+									<ul>
+										<li class="<?php if ($sub_menu == "penilaian" or $sub_menu == "penilaian_edit") {
+														echo 'active';
+													} ?>"><a href="web/penilaian">Form Penilaian Karyawan</a></li>
+									</ul>
+								</li>
+
+
 
 								<?php
 								if ($ceks->level == "admin" || $ceks->level == "hrd") { ?>
 									<li class="<?php if (
-													$sub_menu == "penilaian" or $sub_menu == "penilaian_edit"
-												) {
-													echo 'active';
-												} ?>">
-										<a href="#"><i class="icon-portfolio"></i> <span>Penilaian Karyawan</span></a>
-										<ul>
-											<li class="<?php if ($sub_menu == "penilaian" or $sub_menu == "penilaian_edit") {
-															echo 'active';
-														} ?>"><a href="web/penilaian">Form Penilaian Karyawan</a></li>
-										</ul>
-									</li>
-
-									<li class="<?php if (
-													$sub_menu == "kriteria" or $sub_menu == "kriteria_edit"
-													or $sub_menu == "sub_kriteria" or $sub_menu == "sub_kriteria_edit"
-													or $sub_menu == "nilai_profil_karyawan" or $sub_menu == "nilai_profil_karyawan_edit"
+													//$sub_menu == "kriteria" or $sub_menu == "kriteria_edit"
+													//or $sub_menu == "sub_kriteria" or $sub_menu == "sub_kriteria_edit"
+													$sub_menu == "nilai_profil_karyawan" or $sub_menu == "nilai_profil_karyawan_edit"
 													or $sub_menu == "analisis"
 												) {
 													echo 'active';
 												} ?>">
 										<a href="#"><i class="icon-portfolio"></i> <span>Profile Matching</span></a>
 										<ul>
-											<li class="<?php if ($sub_menu == "kriteria" or $sub_menu == "kriteria_edit") {
-															echo 'active';
-														} ?>"><a href="web/kriteria">Kriteria</a></li>
+											<!--
+											<li class="<? //php if ($sub_menu == "kriteria" or $sub_menu == "kriteria_edit") {
+														//echo 'active';
+														//} 
+														?>"><a href="web/kriteria">Kriteria</a></li>
 
-											<li class="<?php if ($sub_menu == "sub_kriteria" or $sub_menu == "sub_kriteria_edit") {
+											<li class="<//?php if ($sub_menu == "sub_kriteria" or $sub_menu == "sub_kriteria_edit") {
 															echo 'active';
 														} ?>"><a href="web/sub_kriteria">Sub Kriteria</a></li>
-
+-->
 											<li class="<?php if ($sub_menu == "nilai_profil_karyawan" or $sub_menu == "nilai_profil_karyawan_edit") {
 															echo 'active';
 														} ?>"><a href="web/nilai_profil_karyawan">Nilai Profil Karyawan</a></li>

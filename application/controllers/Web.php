@@ -372,13 +372,14 @@ class Web extends CI_Controller
 				$bidang_pengalaman 	= htmlentities(strip_tags($_POST['bidang_pengalaman']));
 				$status 			= htmlentities(strip_tags($_POST['status']));
 				$status_kontrak		= htmlentities(strip_tags($_POST['status_kontrak']));
-				$batas_usia			= htmlentities(strip_tags($_POST['batas_usia']));
+				$usia				= htmlentities(strip_tags($_POST['usia']));
 				$jk 				= htmlentities(strip_tags($_POST['jk']));
 				$skill				= htmlentities(strip_tags($_POST['skill']));
+				$bertanggungjawab	= htmlentities(strip_tags($_POST['bertanggungjawab']));
+				$jml_bawahan	= htmlentities(strip_tags($_POST['jml_bawahan']));
+				$tgs_pokok		= htmlentities(strip_tags($_POST['tgs_pokok']));
 				$nrp_pemohon_ptk	= htmlentities(strip_tags($_POST['nrp_pemohon_ptk']));
 				$pemohon_ptk		= htmlentities(strip_tags($_POST['pemohon_ptk']));
-				$dept_pemohon_ptk	= htmlentities(strip_tags($_POST['dept_pemohon_ptk']));
-				$kota				= htmlentities(strip_tags($_POST['kota']));
 				$tgl_permintaan		= htmlentities(strip_tags($_POST['tgl_permintaan']));
 
 				$data = array(
@@ -398,14 +399,17 @@ class Web extends CI_Controller
 					'lama_pengalaman'	=> $lama_pengalaman,
 					'bidang_pengalaman'	=> $bidang_pengalaman,
 					'status'			=> $status,
-					'status_kontrak	 '	=> $status_kontrak,
-					'batas_usia'		=> $batas_usia,
+					'status_kontrak'	=> $status_kontrak,
+					'usia'				=> $usia,
 					'jk'				=> $jk,
 					'skill'				=> $skill,
+
+					'bertanggungjawab'	=> $bertanggungjawab,
+					'jml_bawahan'				=> $jml_bawahan,
+					'tgs_pokok'				=> $tgs_pokok,
+
 					'nrp_pemohon_ptk'	=> $nrp_pemohon_ptk,
 					'pemohon_ptk'		=> $pemohon_ptk,
-					'dept_pemohon_ptk'	=> $dept_pemohon_ptk,
-					'kota'				=> $kota,
 					'tgl_permintaan'	=> $tgl_permintaan
 				);
 				$this->Mcrud->save_data('tbl_permintaan', $data);
@@ -465,13 +469,14 @@ class Web extends CI_Controller
 				$bidang_pengalaman 	= htmlentities(strip_tags($_POST['bidang_pengalaman']));
 				$status 			= htmlentities(strip_tags($_POST['status']));
 				$status_kontrak		= htmlentities(strip_tags($_POST['status_kontrak']));
-				$batas_usia			= htmlentities(strip_tags($_POST['batas_usia']));
+				$usia				= htmlentities(strip_tags($_POST['usia']));
 				$jk 				= htmlentities(strip_tags($_POST['jk']));
 				$skill				= htmlentities(strip_tags($_POST['skill']));
+				$bertanggungjawab	= htmlentities(strip_tags($_POST['bertanggungjawab']));
+				$jml_bawahan	= htmlentities(strip_tags($_POST['jml_bawahan']));
+				$tgs_pokok		= htmlentities(strip_tags($_POST['tgs_pokok']));
 				$nrp_pemohon_ptk	= htmlentities(strip_tags($_POST['nrp_pemohon_ptk']));
 				$pemohon_ptk		= htmlentities(strip_tags($_POST['pemohon_ptk']));
-				$dept_pemohon_ptk	= htmlentities(strip_tags($_POST['dept_pemohon_ptk']));
-				$kota				= htmlentities(strip_tags($_POST['kota']));
 				$tgl_permintaan		= htmlentities(strip_tags($_POST['tgl_permintaan']));
 
 				$data = array(
@@ -491,14 +496,17 @@ class Web extends CI_Controller
 					'lama_pengalaman'	=> $lama_pengalaman,
 					'bidang_pengalaman'	=> $bidang_pengalaman,
 					'status'			=> $status,
-					'status_kontrak	 '	=> $status_kontrak,
-					'batas_usia'		=> $batas_usia,
+					'status_kontrak'	=> $status_kontrak,
+					'usia'				=> $usia,
 					'jk'				=> $jk,
 					'skill'				=> $skill,
+
+					'bertanggungjawab'	=> $bertanggungjawab,
+					'jml_bawahan'				=> $jml_bawahan,
+					'tgs_pokok'				=> $tgs_pokok,
+
 					'nrp_pemohon_ptk'	=> $nrp_pemohon_ptk,
 					'pemohon_ptk'		=> $pemohon_ptk,
-					'dept_pemohon_ptk'	=> $dept_pemohon_ptk,
-					'kota'				=> $kota,
 					'tgl_permintaan'	=> $tgl_permintaan
 				);
 				$this->Mcrud->update_data('tbl_permintaan', array('id_permintaan' => $id), $data);
@@ -549,7 +557,7 @@ class Web extends CI_Controller
 		} else {
 			$data['user'] 		= $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
 			$dept = $this->session->userdata('login_data')->dept;
-			$data['v_laporanpermintaan'] = $this->Mcrud->get_data_permintaann();
+			$data['v_laporanpermintaan'] = $this->Mcrud->get_data_permintaann($dept);
 			$this->load->view('header', $data);
 			$this->load->view('laporan/laporanpermintaan', $data);
 			$this->load->view('footer');
@@ -718,7 +726,7 @@ class Web extends CI_Controller
 				$sheet->setCellValue('M' . $numrow, $data->status);
 				$sheet->setCellValue('N' . $numrow, $data->status_kontrak);
 				$sheet->setCellValue('O' . $numrow, $data->jk);
-				$sheet->setCellValue('P' . $numrow, $data->batas_usia);
+				$sheet->setCellValue('P' . $numrow, $data->usia);
 				$sheet->setCellValue('Q' . $numrow, $data->skill);
 				$sheet->setCellValue('R' . $numrow, $data->bertanggungjawab);
 				$sheet->setCellValue('S' . $numrow, $data->bawahan);
@@ -1409,6 +1417,7 @@ class Web extends CI_Controller
 			$data['v_nilai_profil_karyawan']   = $this->Mcrud->get_nilai_profil_karyawan('');
 			$data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
 			$data['v_sub_kriteria']   = $this->Mcrud->get_sub_kriteria('');
+			$data['v_penilaian']   = $this->Mcrud->get_penilaian('');
 			$this->load->view('header', $data);
 			$this->load->view('dephead/nilai_profil_karyawan', $data);
 			$this->load->view('footer');
@@ -1454,8 +1463,6 @@ class Web extends CI_Controller
 			$data['v_nilai_profil_karyawan']    = $this->Mcrud->get_data_by_pk('tbl_nilai_profil_karyawan', 'id_nilai_profil_karyawan', $id);
 			$data['v_kriteria']   = $this->Mcrud->get_data('tbl_kriteria');
 			$data['v_sub_kriteria']   = $this->Mcrud->get_sub_kriteria('');
-
-
 
 
 			if ($data['v_nilai_profil_karyawan']->num_rows() == 0) {
@@ -1518,7 +1525,7 @@ class Web extends CI_Controller
 		}
 	}
 
-	
+
 
 
 	public function upload()
@@ -1835,7 +1842,7 @@ class Web extends CI_Controller
 					$i++;
 				}
 
-				
+
 				$html = $html . "<table width=\"100%\" class=\"table table-bordered\">";
 				$html = $html . "<thead>";
 				$html = $html . "<td>Nama karyawan</td>";
@@ -1942,7 +1949,7 @@ class Web extends CI_Controller
 				$data['nm_karyawan_rangking'] = $nm_karyawan_rangking;
 				$data['total_nilai_rangking'] = $total_nilai_rangking;
 
-				
+
 				//$this->load->view('dephead/analisis', $data);
 				$this->load->view('header', $data);
 				$this->load->view('dephead/analisis', $data);
@@ -2129,6 +2136,252 @@ class Web extends CI_Controller
 			}
 		}
 	}
+ // ini persetujuan
+	public function persetujuanptk()
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$data['user']  			    = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
+			$data['v_permintaan']   = $this->Mcrud->get_permintaan();
+			$data['v_persetujuan']		= $this->Mcrud->get_data_persetujuanptk();
 
-	
+			$this->load->view('header', $data);
+			$this->load->view('admin/persetujuanptk', $data);
+			$this->load->view('footer');
+
+
+			if (isset($_POST['btnsimpan'])) {
+				$id_permintaan					= htmlentities(strip_tags($_POST['id_permintaan']));
+				$persetujuan_ptk					= htmlentities(strip_tags($_POST['persetujuan_ptk']));
+				$ket_stj_ptk		= htmlentities(strip_tags($_POST['ket_stj_ptk']));
+				$pic_ptk 					= htmlentities(strip_tags($_POST['pic_ptk']));
+
+				$data = array(
+					'id_permintaan'					 => $id_permintaan,
+					'persetujuan_ptk'					 => $persetujuan_ptk,
+					'ket_stj_ptk'				   => $ket_stj_ptk,
+					'pic_ptk'					 		 => $pic_ptk
+				);
+				$this->Mcrud->save_data('tbl_persetujuan_ptk', $data);
+
+				$this->session->set_flashdata(
+					'msg',
+					'
+									 <div class="alert alert-success alert-dismissible" role="alert">
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times; &nbsp;</span>
+											</button>
+											<strong>Sukses!</strong> Persetujuan berhasil ditambahkan.
+									 </div>'
+				);
+
+				redirect('web/persetujuanptk');
+			}
+		}
+	}
+
+
+	public function persetujuanptk_edit($id = '')
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$data['user']  			   = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
+			$data['v_permintaan']   = $this->Mcrud->get_data('tbl_permintaan');
+			$data['v_persetujuan']		= $this->Mcrud->get_data_persetujuanptk();
+
+
+			if ($data['v_persetujuan']->num_rows() == 0) {
+				redirect('web/persetujuanptk');
+			} else {
+				$data['v_persetujuan'] = $data['v_persetujuan']->row();
+			}
+
+			$this->load->view('header', $data);
+			$this->load->view('admin/persetujuanptk_edit', $data);
+			$this->load->view('footer');
+
+			if (isset($_POST['btnsimpan'])) {
+				$id_permintaan					= htmlentities(strip_tags($_POST['id_permintaan']));
+				$persetujuan_ptk					= htmlentities(strip_tags($_POST['persetujuan_ptk']));
+				$ket_stj_ptk		= htmlentities(strip_tags($_POST['ket_stj_ptk']));
+				$pic_ptk 					= htmlentities(strip_tags($_POST['pic_ptk']));
+
+				$data = array(
+					'id_permintaan'					 => $id_permintaan,
+					'persetujuan_ptk'					 => $persetujuan_ptk,
+					'ket_stj_ptk'				   => $ket_stj_ptk,
+					'pic_ptk'					 		 => $pic_ptk
+				);
+				$this->Mcrud->update_data('tbl_persetujuan_ptk', array('id_persetujuan' => $id), $data);
+
+				$this->session->set_flashdata(
+					'msg',
+					'
+								 <div class="alert alert-success alert-dismissible" role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times; &nbsp;</span>
+										</button>
+										<strong>Sukses!</strong> persetujuan berhasil ditambahkan.
+								 </div>'
+				);
+				redirect('web/persetujuanptk');
+			}
+		}
+	}
+
+
+	public function persetujuanptk_hapus($id = '')
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$cek_persetujuan = $this->Mcrud->get_data_by_pk('tbl_persetujuanpk', 'id_persetujuan', $id)->row();
+			unlink("$cek_persetujuan->image_persetujuan");
+
+			$this->Mcrud->delete_data_by_pk('tbl_persetujuanpk', 'id_persetujuan', $id);
+
+			$this->session->set_flashdata(
+				'msg',
+				'
+					 <div class="alert alert-success alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times; &nbsp;</span>
+							</button>
+							<strong>Sukses!</strong> Persetujuan berhasil dihapus.
+					 </div>'
+			);
+			redirect('web/persetujuanptk');
+		}
+	}
+
+	public function realisasiptk()
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$data['user']  			    = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
+			$data['v_permintaan']   = $this->Mcrud->get_data('tbl_permintaan');
+			$data['v_realisasiptk']		= $this->Mcrud->get_data_realisasiptk('');
+			$data['v_persetujuan']		= $this->Mcrud->get_data_persetujuanptk();
+
+			$this->load->view('header', $data);
+			$this->load->view('admin/realisasiptk', $data);
+			$this->load->view('footer');
+
+			if (isset($_POST['btnsimpan'])) {
+
+				$id_persetujuan = htmlentities(strip_tags($_POST['id_persetujuan']));
+				$mengetahui_ptk = htmlentities(strip_tags($_POST['mengetahui_ptk']));
+				$nama_ptk = htmlentities(strip_tags($_POST['nama_ptk']));
+				$tgl_ptk = $_POST['tgl_ptk'];
+				$ket_ptk = htmlentities(strip_tags($_POST['ket_ptk']));
+				$pj_ptk = htmlentities(strip_tags($_POST['pj_ptk']));
+
+				$data = array(
+
+					'id_persetujuan'					=> $id_persetujuan,
+					'mengetahui_ptk'				  => $mengetahui_ptk,
+					'nama_ptk'				  => $nama_ptk,
+					'tgl_ptk'				=> $tgl_ptk,
+					'ket_ptk'			=> $ket_ptk,
+					'pj_ptk'							=> $pj_ptk
+				);
+				$this->Mcrud->save_data('tbl_realisasi_ptk', $data);
+
+				$this->session->set_flashdata(
+					'msg',
+					'
+										 <div class="alert alert-success alert-dismissible" role="alert">
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times; &nbsp;</span>
+												</button>
+												<strong>Sukses!</strong> Realisasi berhasil ditambahkan.
+										 </div>'
+				);
+
+				redirect('web/realisasiptk');
+			}
+		}
+	}
+
+
+	public function realisasiptk_edit($id = '')
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$data['user']  			   = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks);
+			$data['v_permintaan']  = $this->Mcrud->get_data('tbl_permintaan');
+			$data['v_realisasiptk']    = $this->Mcrud->get_data_by_pk('tbl_realisasi_ptk', 'id_realisasi', $id);
+
+			if ($data['v_realisasiptk']->num_rows() == 0) {
+				redirect('web/realisasiptk');
+			} else {
+				$data['v_realisasiptk'] = $data['v_realisasiptk']->row();
+			}
+			$this->load->view('header', $data);
+			$this->load->view('admin/realisasiptk_edit', $data);
+			$this->load->view('footer');
+
+			if (isset($_POST['btnsimpan'])) {
+				$id_persetujuan = htmlentities(strip_tags($_POST['id_persetujuan']));
+				$mengetahui_ptk = htmlentities(strip_tags($_POST['mengetahui_ptk']));
+				$nama_ptk = htmlentities(strip_tags($_POST['nama_ptk']));
+				$tgl_ptk = $_POST['tgl_ptk'];
+				$ket_ptk = htmlentities(strip_tags($_POST['ket_ptk']));
+				$pj_ptk = htmlentities(strip_tags($_POST['pj_ptk']));
+
+				$data = array(
+					'id_persetujuan'					=> $id_persetujuan,
+					'mengetahui_ptk'				  => $mengetahui_ptk,
+					'nama_ptk'				  => $nama_ptk,
+					'tgl_ptk'				=> $tgl_ptk,
+					'ket_ptk'			=> $ket_ptk,
+					'pj_ptk'							=> $pj_ptk
+				);
+				$this->Mcrud->update_data('tbl_realisasi_ptk', array('id_realisasi' => $id), $data);
+
+				$this->session->set_flashdata(
+					'msg',
+					'
+									 <div class="alert alert-success alert-dismissible" role="alert">
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times; &nbsp;</span>
+											</button>
+											<strong>Sukses!</strong> Realisasi berhasil diubah.
+									 </div>'
+				);
+				redirect('web/realisasiptk');
+			}
+		}
+	}
+
+	public function realisasiptk_hapus($id = '')
+	{
+		$ceks = $this->session->userdata('kamar@2017');
+		if (!isset($ceks)) {
+			redirect('web/login');
+		} else {
+			$this->Mcrud->delete_data_by_pk('tbl_realisasi_ptk', 'id_realisasi', $id);
+
+			$this->session->set_flashdata(
+				'msg',
+				'
+						 <div class="alert alert-success alert-dismissible" role="alert">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times; &nbsp;</span>
+								</button>
+								<strong>Sukses!</strong> Realisasi berhasil dihapus.
+						 </div>'
+			);
+			redirect('web/realisasiptk');
+		}
+	}
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2020 at 11:47 AM
+-- Generation Time: Mar 12, 2020 at 05:55 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -109,7 +109,8 @@ CREATE TABLE `tbl_karyawan` (
 
 INSERT INTO `tbl_karyawan` (`nrp`, `nm_karyawan`, `dept`, `seksi`, `gol`, `subgol`, `jab`, `pendidikan`, `pengalaman`, `status`, `usia`, `jk`) VALUES
 ('470', 'THOHARI', 'PROCESS ENGINEERING CHAIN', 'MAINTENANCE P.3', '2', '2E', 'TEKNISI', 'S1', 'Berpengalaman', 'Kontrak', 45, 'Pria'),
-('3006', 'Agnesia Indah', 'QUALITY ASSURANCE', 'QUALITY CONTROL CHAIN (P3)', '0', '0A', 'OPERATOR', 'D4', 'Fresh Graduate', 'Magang', 21, 'Pria');
+('1234', 'Barbara Karina', 'HRD GA', 'People Development', '2', '2A', 'Staff', 'D4', 'Pengalaman', 'simpan', 24, 'Wanita'),
+('3006', 'Agnesia Indah', 'QUALITY ASSURANCE', 'QUALITY CONTROL CHAIN (P3)', '1', '1A', 'OPERATOR', 'D4', 'Fresh Graduate', 'Magang', 21, 'Wanita');
 
 -- --------------------------------------------------------
 
@@ -171,7 +172,7 @@ INSERT INTO `tbl_nilai_profil_karyawan` (`id_nilai_profil_karyawan`, `nrp`, `id_
 (9, 470, 9, 44, 4),
 (10, 470, 10, 48, 3),
 (11, 470, 12, 59, 4),
-(12, 470, 13, 63, 3),
+(12, 470, 11, 54, 4),
 (13, 3006, 1, 3, 3),
 (14, 3006, 2, 8, 3),
 (15, 3006, 3, 14, 4),
@@ -184,8 +185,18 @@ INSERT INTO `tbl_nilai_profil_karyawan` (`id_nilai_profil_karyawan`, `nrp`, `id_
 (22, 3006, 10, 49, 4),
 (23, 3006, 11, 53, 3),
 (24, 3006, 12, 58, 3),
-(25, 3006, 13, 63, 3),
-(26, 470, 11, 54, 4);
+(25, 1234, 1, 3, 3),
+(26, 1234, 2, 9, 4),
+(27, 1234, 3, 13, 3),
+(28, 1234, 4, 17, 2),
+(29, 1234, 5, 23, 3),
+(30, 1234, 6, 29, 4),
+(31, 1234, 7, 32, 2),
+(32, 1234, 8, 38, 3),
+(33, 1234, 9, 42, 2),
+(34, 1234, 10, 48, 3),
+(35, 1234, 11, 54, 4),
+(36, 1234, 12, 59, 4);
 
 -- --------------------------------------------------------
 
@@ -221,7 +232,8 @@ CREATE TABLE `tbl_penilaian` (
 --
 
 INSERT INTO `tbl_penilaian` (`id_penilaian`, `nrp`, `kualitas`, `kuantitas`, `kerjasama`, `kepemimpinan`, `kemandirian`, `qcc`, `sumbang_saran`, `tanggung_jawab`, `absensi`, `waktu_kerja`, `pelaksanaan_peraturan`, `kehadiran`, `score`, `rekomendasi`, `pj_dephead`, `dept`, `tgl_pengisian`, `catatan`) VALUES
-(1, 470, 66, 78, 67, 89, 87, 88, 89, 87, 56, 78, 67, 56, '76', 'Baik', 'Umi', 'PROCESS ENGINEERING CHAIN', '2020-02-29', 'test');
+(1, 470, 66, 78, 67, 89, 87, 88, 89, 87, 56, 78, 67, 56, '76', 'Baik', 'Umi', 'PROCESS ENGINEERING CHAIN', '2020-02-29', 'test'),
+(2, 3006, 67, 68, 78, 77, 76, 68, 87, 78, 77, 78, 67, 65, '75', 'Baik', 'Umi', 'HRD GA', '2020-03-12', 'kelemahan dan kelebihan');
 
 -- --------------------------------------------------------
 
@@ -270,7 +282,7 @@ CREATE TABLE `tbl_sub_kriteria` (
   `id_sub_kriteria` int(11) NOT NULL,
   `id_kriteria` int(11) DEFAULT NULL,
   `nama_sub_kriteria` varchar(50) DEFAULT NULL,
-  `nilai_sub_kriteria` double DEFAULT NULL
+  `nilai_sub_kriteria` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -337,12 +349,7 @@ INSERT INTO `tbl_sub_kriteria` (`id_sub_kriteria`, `id_kriteria`, `nama_sub_krit
 (57, 12, 'Kurang', 2),
 (58, 12, 'Cukup', 3),
 (59, 12, 'Baik', 4),
-(60, 12, 'Baik Sekali', 5),
-(61, 13, 'Operator dan Staff Golongan 1', 1),
-(62, 13, 'Staff Golongan 2', 2),
-(63, 13, 'Staff Golongan 3', 3),
-(64, 13, 'Leader', 4),
-(65, 13, 'Foreman', 5);
+(60, 12, 'Baik Sekali', 5);
 
 -- --------------------------------------------------------
 
@@ -484,13 +491,13 @@ ALTER TABLE `tbl_kriteria`
 -- AUTO_INCREMENT for table `tbl_nilai_profil_karyawan`
 --
 ALTER TABLE `tbl_nilai_profil_karyawan`
-  MODIFY `id_nilai_profil_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_nilai_profil_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tbl_penilaian`
 --
 ALTER TABLE `tbl_penilaian`
-  MODIFY `id_penilaian` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_penilaian` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_permintaan`
@@ -502,7 +509,7 @@ ALTER TABLE `tbl_permintaan`
 -- AUTO_INCREMENT for table `tbl_sub_kriteria`
 --
 ALTER TABLE `tbl_sub_kriteria`
-  MODIFY `id_sub_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_sub_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

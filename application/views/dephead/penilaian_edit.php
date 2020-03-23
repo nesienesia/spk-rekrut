@@ -30,75 +30,110 @@
                     <form class="form-horizontal" action="" method="post">
                         <div class="col-md-12">
                             <div class="col-md-12">
-
-                                <div class="form-group">
-                                    <label class="control-label col-lg-2">Kode Realisasi *</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" name="kd_realisasi" class="form-control" value="<?php echo $v_evaluasidephead->kd_realisasi; ?>" required maxlength="35" placeholder="Kode Realisasi" readonly>
+                            <div class="form-group">
+                                        <label class="control-label col-lg-2"><b>NRP *</b></label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="nrp" class="form-control" value="<?php echo $v_penilaian->nrp; ?>" required maxlength="35" placeholder="NRP">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-2"><b>1. Aspek Perilaku *</b></label>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-lg-14">Setelah menigkuti training / pelatihan, apakah peserta training mengalami perubahan perilaku yang positif berkaitan dengan materi training / pelatihan yang Ia terima?</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-lg-2"> </label>
-                                    <div class="col-lg-10">
-                                        <input type="radio" name="aspek_perilaku" value="100" <?php if ($v_evaluasidephead->aspek_perilaku == 100) {
-                                                                                                    echo 'checked';
-                                                                                                } ?>> Ya<br>
-                                        <input type="radio" name="aspek_perilaku" value="0" <?php if ($v_evaluasidephead->aspek_perilaku == 0) {
-                                                                                                echo 'checked';
-                                                                                            } ?>> Tidak<br>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-10"><b>1. Kualitas dan Kuantitas Kerja *</b></label>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-10"><b>2. Aspek Kemampuan dan Pengetahuan *</b></label>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-lg-10">a.Peserta menguasai materi training dan mampu menyampaikan pokok-pokok materi pada pihak lain</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-lg-2"> </label>
-                                    <div class="col-lg-10">
-                                        <input type="text" name="aspek_a" class="form-control" value="<?php echo $v_evaluasidephead->aspek_a; ?>" required maxlength="35" placeholder="Score">
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Kualitas</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="kualitas" class="form-control" value="<?php echo $v_penilaian->kualitas; ?>" required maxlength="35" placeholder="Score (1-100)">
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-lg-12">b.Kemampuan dalam memberikan contoh / ilustrasi atau peragaan sehingga pihak lain dapat mudah memahami akan materi training yang disampaikan</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-lg-2"></label>
-                                    <div class="col-lg-10">
-                                        <input type="text" name="aspek_b" class="form-control" value="<?php echo $v_evaluasidephead->aspek_b; ?>" required maxlength="35" placeholder="Score">
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Kuantitas</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="kuantitas" class="form-control" value="<?php echo $v_penilaian->kuantitas; ?>" required maxlength="35" placeholder="Score (1-100)">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-10">c.Kemampuan mengaplikasikan hasil training di tempat kerja</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-lg-2"></label>
-                                    <div class="col-lg-10">
-                                        <input type="text" name="aspek_c" class="form-control" value="<?php echo $v_evaluasidephead->aspek_c; ?>" required maxlength="35" placeholder="Score">
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-10"><b>2. Kerjasama dan Kepemimpinan *</b></label>
                                     </div>
-                                </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Kerjasama</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="kerjasama" class="form-control" value="<?php echo $v_penilaian->kerjasama; ?>" required maxlength="35" placeholder="Score (40-90)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Kepemimpinan</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="kepemimpinan" class="form-control" value="<?php echo $v_penilaian->kepemimpinan; ?>" required maxlength="35" placeholder="Score (40-90)">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-10"><b>3. Inisiatif dan Kreatifitas *</b></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Kemandirian</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="kemandirian" class="form-control" value="<?php echo $v_penilaian->kemandirian; ?>" required maxlength="35" placeholder="Score (40-90)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">QCC</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="qcc" class="form-control" value="<?php echo $v_penilaian->qcc; ?>" required maxlength="35" placeholder="Score (40-90)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Sumbang Saran</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="sumbang_saran" class="form-control" value="<?php echo $v_penilaian->sumbang_saran; ?>" required maxlength="35" placeholder="Score (40-90)">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-10"><b>4. Keandalan dan Tanggung Jawab *</b></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="tanggung_jawab" class="form-control" value="<?php echo $v_penilaian->tanggung_jawab; ?>" required maxlength="35" placeholder="Score (40-90)">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-10"><b>5. Kedisiplinan *</b></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Absensi</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="absensi" class="form-control" value="<?php echo $v_penilaian->absensi; ?>" required maxlength="35" placeholder="Score (40-90)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Penggunaan Waktu Kerja</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="waktu_kerja" class="form-control" value="<?php echo $v_penilaian->waktu_kerja; ?>" required maxlength="35" placeholder="Score (40-90)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Pelaksanaan Peraturan Perusanaan</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="pelaksanaan_peraturan" class="form-control" value="<?php echo $v_penilaian->pelaksanaan_peraturan; ?>" required maxlength="35" placeholder="Score (40-90)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Kehadiran</label>
+                                        <div class="col-lg-10">
+                                            <input type="number" min="40" max="90" name="kehadiran" class="form-control" value="<?php echo $v_penilaian->kehadiran; ?>" required placeholder="Score (40-90)">
+                                        </div>
+                                    </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-lg-2">Penanggung Jawab *</label>
                                     <div class="col-lg-10">
-                                        <input type="text" name="pj_dephead" class="form-control" value="<?php echo $v_evaluasidephead->pj_dephead; ?>" required maxlength="35" placeholder="Penanggung Jawab">
+                                        <input type="text" name="pj_dephead" class="form-control" value="<?php echo $v_penilaian->pj_dephead; ?>" required maxlength="35" placeholder="Penanggung Jawab">
                                     </div>
                                 </div>
 
@@ -110,7 +145,7 @@
                                             <?php
                                             $jsArray = "var dtKamar = new Array();\n";
                                             foreach ($v_dept->result() as $baris) {
-                                                if ($baris->nm_dep == $v_evaluasidephead->dept) {
+                                                if ($baris->nm_dep == $v_penilaian->dept) {
                                                     $select = "selected";
                                                 } else {
                                                     $select = "";
@@ -127,14 +162,14 @@
                                 <div class="form-group">
                                     <label class="control-label col-lg-2">Tanggal Pengisian *</label>
                                     <div class="col-lg-10">
-                                        <input type="date" name="tgl_dephead" class="form-control" value="<?php echo $v_evaluasidephead->tgl_dephead; ?>" required placeholder="Tanggal Pengisian">
+                                        <input type="date" name="tgl_dephead" class="form-control" value="<?php echo $v_penilaian->tgl_pengisian; ?>" required placeholder="Tanggal Pengisian">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                         <label class="control-label col-lg-2">Catatan</label>
                                         <div class="col-lg-10">
-                                            <textarea name="catatan" rows="8" cols="80" class="form-control" placeholder="Catatan "><?php echo $v_evaluasidephead->catatan; ?></textarea>
+                                            <textarea name="catatan" rows="8" cols="80" class="form-control" placeholder="Catatan "><?php echo $v_penilaian->catatan; ?></textarea>
                                         </div>
                                     </div>
 
@@ -144,7 +179,7 @@
                         <br>
                         <hr>
                         <hr>
-                        <a href="web/evaluasidephead" class="btn btn-default">Back</a>
+                        <a href="web/penilaian" class="btn btn-default">Back</a>
 
                         <button type="submit" name="btnsimpan" class="btn btn-primary" style="float:right;">Save</button>
 

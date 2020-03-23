@@ -8,7 +8,7 @@ if ($sub_menu == "grafik") {
 } ?>
           <!-- Footer -->
           <div class="footer text-muted">
-            &copy; Agnesia Indah Sukma 2019. <a href=""></a>
+            &copy; Agnesia Indah Sukma 2020
           </div>
           <!-- /footer -->
 
