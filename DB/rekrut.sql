@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2020 at 05:55 AM
+-- Generation Time: Jun 26, 2020 at 03:15 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -97,20 +97,24 @@ CREATE TABLE `tbl_karyawan` (
   `subgol` varchar(35) DEFAULT NULL,
   `jab` varchar(35) DEFAULT NULL,
   `pendidikan` varchar(35) NOT NULL,
-  `pengalaman` varchar(35) NOT NULL,
-  `status` varchar(35) NOT NULL,
-  `usia` int(2) NOT NULL,
-  `jk` varchar(35) NOT NULL
+  `usia` int(2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_karyawan`
 --
 
-INSERT INTO `tbl_karyawan` (`nrp`, `nm_karyawan`, `dept`, `seksi`, `gol`, `subgol`, `jab`, `pendidikan`, `pengalaman`, `status`, `usia`, `jk`) VALUES
-('470', 'THOHARI', 'PROCESS ENGINEERING CHAIN', 'MAINTENANCE P.3', '2', '2E', 'TEKNISI', 'S1', 'Berpengalaman', 'Kontrak', 45, 'Pria'),
-('1234', 'Barbara Karina', 'HRD GA', 'People Development', '2', '2A', 'Staff', 'D4', 'Pengalaman', 'simpan', 24, 'Wanita'),
-('3006', 'Agnesia Indah', 'QUALITY ASSURANCE', 'QUALITY CONTROL CHAIN (P3)', '1', '1A', 'OPERATOR', 'D4', 'Fresh Graduate', 'Magang', 21, 'Wanita');
+INSERT INTO `tbl_karyawan` (`nrp`, `nm_karyawan`, `dept`, `seksi`, `gol`, `subgol`, `jab`, `pendidikan`, `usia`) VALUES
+('11101', 'SYAFRUDIN PURBA', 'MARKETING CHAIN', 'Replacement Market', '3', '3B', 'Staff', 'S1', 34),
+('11102', 'ROCHIMANTO', 'MARKETING CHAIN', 'Key Account Chain', '3', '3A', 'Staff', 'D4', 23),
+('11103', 'DARYANTO', 'PROCUREMENT CHAIN', 'Procurement Engineering', '1', '1B', 'Staff', 'SLTA', 45),
+('11104', 'GUNAWAN SUTEJA', 'MARKETING INDUSTRIAL CHAIN', 'Key Account Ind. Chain', '1', '1F', 'Staff', 'SLTA', 33),
+('11105', 'NURAINI', 'FIN AND ACT', 'Finance', '2', '2C', 'Staff', 'S1', 21),
+('11106', 'ELMIFTA INDRIANI SUWANDI', 'PROCUREMENT FILTER', 'Gen .Purcashing Filter', '3', '3A', 'Staff', 'D4', 32),
+('11107', 'TEGUH HARSAYA', 'HRD GA ', 'Filter Operation', '2', '2B', 'Staff', 'S1', 33),
+('11108', 'NANDA WAHYU HIDAYAT', 'ENGINEERING FILTER', 'Product Engineering Filter', '3', '3B', 'Staff', 'SLTA', 45),
+('11109', 'ABDUL ROHMAN', 'PRODUCTION FILTER', 'Assembling Filter', '1', '1A', 'Staff', 'D3', 26),
+('11110', 'LUSIANA EKA PUTRI', 'MARKETING FILTER', 'Key Account Filter', '3', '3E', 'Staff', 'D3', 30);
 
 -- --------------------------------------------------------
 
@@ -129,18 +133,11 @@ CREATE TABLE `tbl_kriteria` (
 --
 
 INSERT INTO `tbl_kriteria` (`id_kriteria`, `nama_kriteria`, `jenis_kriteria`) VALUES
-(1, 'Kualitas', 'Core Factor'),
-(2, 'Kuantitas', 'Core Factor'),
-(3, 'Kerjasama', 'Core Factor'),
-(4, 'Kepemimpinan', 'Core Factor'),
-(5, 'Kemandirian', 'Secondary Factor'),
-(6, 'QCC', 'Secondary Factor'),
-(7, 'Sumbang Saran', 'Secondary Factor'),
-(8, 'Keandalan dan Tanggung Jawab', 'Core Factor'),
-(9, 'Absensi', 'Core Factor'),
-(10, 'Penggunaan Waktu Kerja', 'Secondary Factor'),
-(11, 'Pelaksanaan Peraturan Perusahaan', 'Secondary Factor'),
-(12, 'Kehadiran', 'Secondary Factor');
+(1, 'Penilaian Karyawan', 'Core Factor'),
+(2, 'Pendidikan', 'Secondary Factor'),
+(3, 'Usia', 'Secondary Factor'),
+(4, 'Departemen', 'Core Factor'),
+(5, 'Lama Pengalaman', 'Secondary Factor');
 
 -- --------------------------------------------------------
 
@@ -161,42 +158,56 @@ CREATE TABLE `tbl_nilai_profil_karyawan` (
 --
 
 INSERT INTO `tbl_nilai_profil_karyawan` (`id_nilai_profil_karyawan`, `nrp`, `id_kriteria`, `id_sub_kriteria`, `nilai_profil_karyawan`) VALUES
-(1, 470, 1, 5, 5),
-(2, 470, 2, 9, 4),
-(3, 470, 3, 12, 4),
-(4, 470, 4, 18, 3),
-(5, 470, 5, 23, 3),
-(6, 470, 6, 29, 4),
-(7, 470, 7, 32, 2),
-(8, 470, 8, 38, 3),
-(9, 470, 9, 44, 4),
-(10, 470, 10, 48, 3),
-(11, 470, 12, 59, 4),
-(12, 470, 11, 54, 4),
-(13, 3006, 1, 3, 3),
-(14, 3006, 2, 8, 3),
-(15, 3006, 3, 14, 4),
-(16, 3006, 4, 19, 4),
-(17, 3006, 5, 24, 4),
-(18, 3006, 6, 28, 3),
-(19, 3006, 7, 35, 5),
-(20, 3006, 8, 39, 4),
-(21, 3006, 9, 44, 4),
-(22, 3006, 10, 49, 4),
-(23, 3006, 11, 53, 3),
-(24, 3006, 12, 58, 3),
-(25, 1234, 1, 3, 3),
-(26, 1234, 2, 9, 4),
-(27, 1234, 3, 13, 3),
-(28, 1234, 4, 17, 2),
-(29, 1234, 5, 23, 3),
-(30, 1234, 6, 29, 4),
-(31, 1234, 7, 32, 2),
-(32, 1234, 8, 38, 3),
-(33, 1234, 9, 42, 2),
-(34, 1234, 10, 48, 3),
-(35, 1234, 11, 54, 4),
-(36, 1234, 12, 59, 4);
+(1, 11107, 1, 5, 5),
+(2, 11105, 1, 1, 1),
+(3, 11101, 1, 5, 5),
+(4, 11102, 1, 2, 2),
+(5, 11110, 1, 2, 2),
+(6, 11104, 1, 5, 5),
+(7, 11103, 1, 3, 3),
+(8, 11106, 1, 3, 3),
+(9, 11109, 1, 1, 1),
+(10, 11108, 1, 4, 4),
+(11, 11107, 2, 6, 1),
+(12, 11105, 2, 6, 1),
+(13, 11101, 2, 6, 1),
+(14, 11102, 2, 7, 2),
+(15, 11110, 2, 8, 3),
+(16, 11104, 2, 10, 5),
+(17, 11106, 2, 7, 2),
+(18, 11109, 2, 8, 3),
+(19, 11108, 2, 10, 5),
+(20, 11103, 2, 10, 5),
+(21, 11107, 3, 14, 4),
+(22, 11105, 3, 11, 1),
+(23, 11101, 3, 14, 4),
+(24, 11102, 3, 12, 2),
+(25, 11110, 3, 13, 3),
+(26, 11104, 3, 14, 4),
+(27, 11103, 3, 15, 5),
+(28, 11106, 3, 14, 4),
+(29, 11109, 3, 12, 2),
+(30, 11108, 3, 15, 5),
+(31, 11107, 4, 18, 3),
+(32, 11105, 4, 16, 1),
+(33, 11101, 4, 16, 1),
+(34, 11102, 4, 16, 1),
+(35, 11110, 4, 18, 3),
+(36, 11104, 4, 16, 1),
+(37, 11103, 4, 16, 1),
+(38, 11106, 4, 18, 3),
+(39, 11109, 4, 19, 4),
+(40, 11108, 4, 19, 4),
+(41, 11107, 5, 23, 4),
+(42, 11105, 5, 23, 4),
+(43, 11101, 5, 61, 5),
+(44, 11102, 5, 61, 5),
+(45, 11110, 5, 61, 5),
+(46, 11104, 5, 20, 1),
+(47, 11103, 5, 21, 2),
+(48, 11106, 5, 22, 3),
+(49, 11109, 5, 21, 2),
+(50, 11108, 5, 22, 3);
 
 -- --------------------------------------------------------
 
@@ -232,8 +243,16 @@ CREATE TABLE `tbl_penilaian` (
 --
 
 INSERT INTO `tbl_penilaian` (`id_penilaian`, `nrp`, `kualitas`, `kuantitas`, `kerjasama`, `kepemimpinan`, `kemandirian`, `qcc`, `sumbang_saran`, `tanggung_jawab`, `absensi`, `waktu_kerja`, `pelaksanaan_peraturan`, `kehadiran`, `score`, `rekomendasi`, `pj_dephead`, `dept`, `tgl_pengisian`, `catatan`) VALUES
-(1, 470, 66, 78, 67, 89, 87, 88, 89, 87, 56, 78, 67, 56, '76', 'Baik', 'Umi', 'PROCESS ENGINEERING CHAIN', '2020-02-29', 'test'),
-(2, 3006, 67, 68, 78, 77, 76, 68, 87, 78, 77, 78, 67, 65, '75', 'Baik', 'Umi', 'HRD GA', '2020-03-12', 'kelemahan dan kelebihan');
+(1, 11101, 90, 89, 87, 78, 86, 89, 88, 86, 89, 88, 88, 89, '88', 'Baik Sekali', 'Rifan Amando', 'MARKETING CHAIN', '2020-06-13', 'Kinerja sudah sangat baik'),
+(2, 11102, 66, 65, 56, 56, 55, 54, 56, 57, 58, 59, 57, 56, '59', 'Kurang', 'Rifan Amando', 'MARKETING CHAIN', '2020-06-13', 'Tingkatkan lagi kinerjanya'),
+(3, 11103, 68, 66, 67, 65, 66, 65, 65, 76, 67, 76, 75, 78, '69', 'Cukup', 'Fandy Irwanto', 'PROCUREMENT CHAIN', '2020-06-13', 'Kinerja sudah cukup, tapi alahkah lebih baik jika ditingkatkan lagi'),
+(4, 11104, 89, 87, 90, 90, 87, 87, 89, 87, 78, 76, 75, 78, '86', 'Baik Sekali', 'Herawan Setiyadi', 'MARKETING INDUSTRIAL CHAIN', '2020-06-13', 'Kinerja bagus'),
+(5, 11105, 40, 45, 45, 45, 46, 46, 43, 56, 56, 54, 43, 55, '48', 'Kurang Sekali', 'Alvin Christanto Salim', 'FIN AND ACT', '2020-06-13', 'Kinerja Kurang'),
+(6, 11106, 64, 67, 67, 66, 64, 65, 64, 67, 77, 78, 79, 79, '69', 'Cukup', 'Yudhi Handoko', 'PROCUREMENT FILTER', '2020-06-13', 'Kinerja sudah cukup'),
+(7, 11107, 67, 68, 67, 66, 66, 65, 68, 66, 67, 78, 65, 68, '68', 'Cukup', 'Rudy Andrianto', 'HRD GA', '2020-06-13', 'Kinerja sudah cukup, tapi alangkah baiknya jika ditingkatkan'),
+(8, 11108, 78, 77, 76, 78, 76, 80, 80, 76, 76, 78, 78, 77, '78', 'Baik', 'Andy Nugroho', 'ENGINEERING FILTER', '2020-06-13', 'Bagus'),
+(9, 11109, 45, 54, 46, 47, 48, 44, 43, 54, 54, 45, 46, 54, '49', 'Kurang Sekali', 'Nelson Tampubolon', 'PRODUCTION FILTER', '2020-06-13', 'Kinerja kurang, tingkatkan lagi'),
+(10, 11110, 56, 55, 57, 58, 59, 57, 56, 57, 58, 58, 57, 58, '58', 'Kurang', 'Zurkarnaen Mansur', 'MARKETING FILTER', '2020-06-13', 'kurang, tingkatkan lagi');
 
 -- --------------------------------------------------------
 
@@ -243,7 +262,7 @@ INSERT INTO `tbl_penilaian` (`id_penilaian`, `nrp`, `kualitas`, `kuantitas`, `ke
 
 CREATE TABLE `tbl_permintaan` (
   `id_permintaan` int(10) NOT NULL,
-  `departement` varchar(35) NOT NULL,
+  `departemen` varchar(35) NOT NULL,
   `seksi` varchar(35) NOT NULL,
   `jabatan` varchar(35) NOT NULL,
   `golongan` varchar(35) NOT NULL,
@@ -259,18 +278,68 @@ CREATE TABLE `tbl_permintaan` (
   `lama_pengalaman` varchar(35) NOT NULL,
   `bidang_pengalaman` varchar(35) NOT NULL,
   `status` varchar(35) NOT NULL,
-  `lama_kontrak` varchar(35) NOT NULL,
-  `batas_usia` varchar(35) NOT NULL,
+  `status_kontrak` varchar(35) NOT NULL,
+  `usia` varchar(35) NOT NULL,
   `jk` varchar(15) NOT NULL,
   `skill` text NOT NULL,
   `bertanggungjawab` varchar(35) NOT NULL,
-  `bawahan` varchar(10) NOT NULL,
   `jml_bawahan` varchar(5) NOT NULL,
   `tgs_pokok` text NOT NULL,
   `nrp_pemohon_ptk` int(5) NOT NULL,
-  `dept_pemohon` int(11) NOT NULL,
+  `pemohon_ptk` varchar(35) NOT NULL,
   `tgl_permintaan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_permintaan`
+--
+
+INSERT INTO `tbl_permintaan` (`id_permintaan`, `departemen`, `seksi`, `jabatan`, `golongan`, `jumlah`, `sumber_tenaga`, `due_date`, `tujuan`, `an`, `alasan`, `pendidikan`, `jurusan`, `pengalaman`, `lama_pengalaman`, `bidang_pengalaman`, `status`, `status_kontrak`, `usia`, `jk`, `skill`, `bertanggungjawab`, `jml_bawahan`, `tgs_pokok`, `nrp_pemohon_ptk`, `pemohon_ptk`, `tgl_permintaan`) VALUES
+(4, 'HRD GA', 'People Development', 'Staff', '2', '1', 'Internal', '2020-03-31', 'Penambahan', '-', 'kekurangan orang', 'D4', 'Sistem Informasi', 'Pengalaman', '5 tahun', 'Administratif', 'Kontrak', '6 bulan', '35', 'P', '-', 'umi', '0', '-', 1234, 'Umi Kuswari', '2020-03-17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_persetujuan_ptk`
+--
+
+CREATE TABLE `tbl_persetujuan_ptk` (
+  `id_persetujuan` int(10) NOT NULL,
+  `id_permintaan` int(10) NOT NULL,
+  `persetujuan_ptk` varchar(35) NOT NULL,
+  `ket_stj_ptk` text NOT NULL,
+  `pic_ptk` varchar(35) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_persetujuan_ptk`
+--
+
+INSERT INTO `tbl_persetujuan_ptk` (`id_persetujuan`, `id_permintaan`, `persetujuan_ptk`, `ket_stj_ptk`, `pic_ptk`) VALUES
+(1, 4, 'Setuju', 'coba', 'umi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_realisasi_ptk`
+--
+
+CREATE TABLE `tbl_realisasi_ptk` (
+  `id_realisasi` int(10) NOT NULL,
+  `id_persetujuan` int(10) NOT NULL,
+  `mengetahui_ptk` varchar(35) NOT NULL,
+  `nama_ptk` text NOT NULL,
+  `tgl_ptk` date NOT NULL,
+  `ket_ptk` text NOT NULL,
+  `pj_ptk` varchar(35) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_realisasi_ptk`
+--
+
+INSERT INTO `tbl_realisasi_ptk` (`id_realisasi`, `id_persetujuan`, `mengetahui_ptk`, `nama_ptk`, `tgl_ptk`, `ket_ptk`, `pj_ptk`) VALUES
+(1, 1, 'rudy', 'NURAINI', '2020-03-24', 'staff', 'umi');
 
 -- --------------------------------------------------------
 
@@ -295,61 +364,25 @@ INSERT INTO `tbl_sub_kriteria` (`id_sub_kriteria`, `id_kriteria`, `nama_sub_krit
 (3, 1, 'Cukup', 3),
 (4, 1, 'Baik', 4),
 (5, 1, 'Baik Sekali', 5),
-(6, 2, 'Kurang Sekali', 1),
-(7, 2, 'Kurang', 2),
-(8, 2, 'Cukup', 3),
-(9, 2, 'Baik', 4),
-(10, 2, 'Baik Sekali', 5),
-(11, 3, 'Kurang Sekali', 1),
-(12, 3, 'Kurang', 2),
-(13, 3, 'Cukup', 3),
-(14, 3, 'Baik', 4),
-(15, 3, 'Baik Sekali', 5),
-(16, 4, 'Kurang Sekali', 1),
-(17, 4, 'Kurang', 2),
-(18, 4, 'Cukup', 3),
-(19, 4, 'Baik', 4),
-(20, 4, 'Baik Sekali', 5),
-(21, 5, 'Kurang Sekali', 1),
-(22, 5, 'Kurang', 2),
-(23, 5, 'Cukup', 3),
-(24, 5, 'Baik', 4),
-(25, 5, 'Baik Sekali', 5),
-(26, 6, 'Kurang Sekali', 1),
-(27, 6, 'Kurang', 2),
-(28, 6, 'Cukup', 3),
-(29, 6, 'Baik', 4),
-(30, 6, 'Baik Sekali', 5),
-(31, 7, 'Kurang Sekali', 1),
-(32, 7, 'Kurang', 2),
-(33, 7, 'Cukup', 3),
-(34, 7, 'Baik', 4),
-(35, 7, 'Baik Sekali', 5),
-(36, 8, 'Kurang Sekali', 1),
-(37, 8, 'Kurang', 2),
-(38, 8, 'Cukup', 3),
-(39, 8, 'Baik', 4),
-(40, 8, 'Baik Sekali', 5),
-(41, 9, 'Kurang Sekali', 1),
-(42, 9, 'Kurang', 2),
-(43, 9, 'Cukup', 3),
-(44, 9, 'Baik', 4),
-(45, 9, 'Baik Sekali', 5),
-(46, 10, 'Kurang Sekali', 1),
-(47, 10, 'Kurang', 2),
-(48, 10, 'Cukup', 3),
-(49, 10, 'Baik', 4),
-(50, 10, 'Baik Sekali', 5),
-(51, 11, 'Kurang Sekali', 1),
-(52, 11, 'Kurang', 2),
-(53, 11, 'Cukup', 3),
-(54, 11, 'Baik', 4),
-(55, 11, 'Baik Sekali', 5),
-(56, 12, 'Kurang Sekali', 1),
-(57, 12, 'Kurang', 2),
-(58, 12, 'Cukup', 3),
-(59, 12, 'Baik', 4),
-(60, 12, 'Baik Sekali', 5);
+(6, 2, 'S1', 1),
+(7, 2, 'D4', 2),
+(8, 2, 'D3', 3),
+(9, 2, 'D1', 4),
+(10, 2, 'SLTA', 5),
+(11, 3, '17-21 Tahun', 1),
+(12, 3, '22-26 Tahun', 2),
+(13, 3, '27-31 Tahun', 3),
+(14, 3, '32-36 Tahun', 4),
+(15, 3, '> 37 Tahun', 5),
+(16, 4, 'Administrasi - Chain', 1),
+(17, 4, 'Plant - Chain', 2),
+(18, 4, 'Administrasi - Filter', 3),
+(19, 4, 'Plant - Filter', 4),
+(20, 5, '1 Tahun', 1),
+(21, 5, '2-5 Tahun', 2),
+(22, 5, '6-10 Tahun', 3),
+(23, 5, '11-15 Tahun', 4),
+(61, 5, '> 15 Tahun', 5);
 
 -- --------------------------------------------------------
 
@@ -448,6 +481,19 @@ ALTER TABLE `tbl_permintaan`
   ADD PRIMARY KEY (`id_permintaan`);
 
 --
+-- Indexes for table `tbl_persetujuan_ptk`
+--
+ALTER TABLE `tbl_persetujuan_ptk`
+  ADD PRIMARY KEY (`id_persetujuan`),
+  ADD KEY `id_permintaan` (`id_permintaan`) USING BTREE;
+
+--
+-- Indexes for table `tbl_realisasi_ptk`
+--
+ALTER TABLE `tbl_realisasi_ptk`
+  ADD PRIMARY KEY (`id_realisasi`);
+
+--
 -- Indexes for table `tbl_sub_kriteria`
 --
 ALTER TABLE `tbl_sub_kriteria`
@@ -491,25 +537,37 @@ ALTER TABLE `tbl_kriteria`
 -- AUTO_INCREMENT for table `tbl_nilai_profil_karyawan`
 --
 ALTER TABLE `tbl_nilai_profil_karyawan`
-  MODIFY `id_nilai_profil_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_nilai_profil_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `tbl_penilaian`
 --
 ALTER TABLE `tbl_penilaian`
-  MODIFY `id_penilaian` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_penilaian` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_permintaan`
 --
 ALTER TABLE `tbl_permintaan`
-  MODIFY `id_permintaan` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_permintaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_persetujuan_ptk`
+--
+ALTER TABLE `tbl_persetujuan_ptk`
+  MODIFY `id_persetujuan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_realisasi_ptk`
+--
+ALTER TABLE `tbl_realisasi_ptk`
+  MODIFY `id_realisasi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_sub_kriteria`
 --
 ALTER TABLE `tbl_sub_kriteria`
-  MODIFY `id_sub_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_sub_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

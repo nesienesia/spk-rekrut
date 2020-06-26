@@ -67,9 +67,10 @@
                         } else {
                           $select = "";
                         }
-                        echo '<option value="' . $baris->id_sub_kriteria . '"' . $select . '>' . "$baris->nama_kriteria [$baris->nama_sub_kriteria]" . '</option>';
+                        echo '<option value="' . $baris->id_sub_kriteria . '"' . $select . '>' . "$baris->nama_kriteria [$baris->nama_sub_kriteria] - ($baris->nilai_sub_kriteria)" . '</option>';
                           $jsArray .= "dtKamar['" . $baris->id_sub_kriteria . "'] = {
-                                        id_sub_kriteria:'" . addslashes($baris->id_sub_kriteria) . "'
+                                        id_sub_kriteria:'" . addslashes($baris->id_sub_kriteria) . "',
+                                        nilai_sub_kriteria:'" . addslashes($baris->nilai_sub_kriteria) . "'
                                       };\n";
                       } ?>
                     </select>

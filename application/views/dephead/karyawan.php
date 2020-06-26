@@ -35,10 +35,10 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
 
           <?php
           if ($ceks->level == "admin" || $ceks->level == "hrd" || $ceks->level == "dephead") { ?>
-            <h5>(Upload Data Disini)</h5>
+            <!--  <h5>(Upload Data Disini)</h5>
             <form class="form-horizontal" action="<?php echo base_url(); ?>web/upload/" method="post" enctype="multipart/form-data">
               <div class="col-md-12">
-                <div class="col-md-12">
+              <div class="col-md-12">
                   <div class="form-group">
                     <label class="control-label col-lg-2">Upload File </label>
                     <div class="col-lg-10">
@@ -46,12 +46,12 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                     </div>
                   </div>
                 </div>
-
+         
                 <input type="submit" value="Import" class="btn btn-primary" style="float:right;">
               </div>
               <hr>
             </form>
-
+ -->
 
             <h5>(Insert Data Disini)</h5>
 
@@ -135,42 +135,11 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                     </div>
 
                     <div class="form-group">
-                      <label class="control-label col-lg-2">Pengalaman *</label>
-                      <div class="col-lg-10">
-                        <input type="radio" name="pengalaman" value="Fresh Graduate" required> Fresh Graduate<br>
-                        <input type="radio" name="pengalaman" value="Pengalaman" required> Pengalaman<br>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label class="control-label col-lg-2">Status *</label>
-                      <div class="col-lg-10">
-                        <select class="form-control" name="status" onchange="changeValue(this.value)" autofocus>
-                          <option value="">Pilih Pengalaman</option>
-                          <option value="Kontrak">Kontrak</option>
-                          <option value="Percobaan">Percobaan</option>
-                          <option value="Magang">Magang</option>
-                          <option value="PKL">PKL</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
                       <label class="control-label col-lg-2">Usia *</label>
                       <div class="col-lg-10">
                         <input type="number" min="1" max="100" class="form-control" name="usia" required="required" placeholder="Usia">
                       </div>
                     </div>
-
-                    <div class="form-group">
-                      <label class="control-label col-lg-2">Jenis Kelamin *</label>
-                      <div class="col-lg-10">
-                        <input type="radio" name="jk" value="Pria" />Pria
-                        <input type="radio" name="jk" value="Wanita" />Wanita
-                      </div>
-                    </div>
-
-
 
                   </div>
                 </div>
@@ -204,8 +173,11 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
             <th>Golongan</th>
             <th>Sub Golongan</th>
             <th>Jabatan</th>
+            <th>Pendidikan</th>
+            <th>Usia</th>
           <?php
           } ?>
+          
           <?php
           if ($ceks->level == "admin" || $ceks->level == "hrd") { ?>
             <th class="text-center" width="100"></th>
@@ -228,7 +200,8 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                 <td><?php echo $baris->gol; ?></td>
                 <td><?php echo $baris->subgol; ?></td>
                 <td><?php echo $baris->jab; ?></td>
-
+                <td><?php echo $baris->pendidikan; ?></td>
+                <td><?php echo $baris->usia; ?></td>
                 <td>
                   <a href="web/karyawan_edit/<?php echo $baris->nrp; ?>" title="Edit"><span class="icon-pencil"></span></a> &nbsp;
                   <a href="web/karyawan_hapus/<?php echo $baris->nrp; ?>" title="Hapus" onclick="return confirm('Apakah Anda yakin?')"><span class="icon-trash"></span></a>

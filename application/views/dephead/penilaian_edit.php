@@ -162,7 +162,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-lg-2">Tanggal Pengisian *</label>
                                     <div class="col-lg-10">
-                                        <input type="date" name="tgl_dephead" class="form-control" value="<?php echo $v_penilaian->tgl_pengisian; ?>" required placeholder="Tanggal Pengisian">
+                                        <input type="date" name="tgl_pengisian" class="form-control" value="<?php echo $v_penilaian->tgl_pengisian; ?>" required placeholder="Tanggal Pengisian">
                                     </div>
                                 </div>
 

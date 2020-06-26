@@ -99,50 +99,12 @@
                   </div>
 
                   <div class="form-group">
-                    <label class="control-label col-lg-2">Pengalaman *</label>
-                    <div class="col-lg-10">
-                      <select class="form-control" name="pengalaman" onchange="changeValue(this.value)" autofocus>
-                      <option value="<?php echo $v_karyawan->pengalaman; ?>" selected><?php echo $v_karyawan->pengalaman; ?></option>  
-                      <option value="">Pilih Pengalaman</option>
-                        <option value="Fresh Graduate">Fresh Graduate</option>
-                        <option value="Berpengalaman">Berpengalaman</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="control-label col-lg-2">Status *</label>
-                    <div class="col-lg-10">
-                      <select class="form-control" name="status" onchange="changeValue(this.value)" autofocus>
-                      <option value="<?php echo $v_karyawan->status; ?>" selected><?php echo $v_karyawan->status; ?></option>
-                        <option value="">Pilih Status</option>
-                        <option value="Kontrak">Kontrak</option>
-                        <option value="Percobaan">Percobaan</option>
-                        <option value="Magang">Magang</option>
-                        <option value="PKL">PKL</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
                     <label class="control-label col-lg-2">Usia *</label>
                     <div class="col-lg-10">
                   <input type="number" min="1" max="100" class="form-control" name="usia" required="required"  placeholder="Usia" value="<?php echo $v_karyawan->usia; ?>">
                     </div>
                   </div>
                   
-                  <div class="form-group">
-                    <label class="control-label col-lg-2">Jenis Kelamin *</label>
-                    <div class="col-lg-10">
-                    <input type="radio" name="jk" value="Pria" <?php if ($v_karyawan->jk =='Pria') {echo 'checked';} ?>
-                    >Pria
-                    <input type="radio" name="jk" value="Wanita" <?php if ($v_karyawan->jk =='Wanita') {echo 'checked';} ?>
-                    >Wanita
-                    </div>
-                  </div>
-
-
-
               </div>
             </div>
 

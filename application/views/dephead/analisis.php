@@ -98,7 +98,7 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                         </thead>
                         <tbody>
                         <?php
-                            for ($i = 0; $i < count($nm_karyawan_rangking); $i++) {
+                            for ($i = 0; $i < 3; $i++) {
                         ?>
                             <tr>
                                 <td><?php echo ($i + 1); ?></td>

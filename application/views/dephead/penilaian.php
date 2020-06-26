@@ -218,6 +218,7 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                         <th>Penggunaan Waktu Kerja</th>
                         <th>Pelaksanaan Peraturan Perusanaan</th>
                         <th>Kehadiran</th>
+                        <th>Nilai Mutu</th>
                         <th>Penanggung Jawab</th>
                         <th>Departemen</th>
                         <th>Tanggal Pengisian</th>
@@ -392,7 +393,7 @@ $ceks = $this->Mcrud->get_data_by_pk('tbl_user', 'username', $ceks)->row();
                                             echo 'Sangat Kurang';
                                         }
                                         ?></td>
-
+                                <td><?php echo $baris->rekomendasi; ?></td>
                                 <td><?php echo $baris->pj_dephead; ?></td>
                                 <td><?php echo $baris->nm_dep; ?></td>
                                 <td><?php echo date('d F Y', strtotime($baris->tgl_pengisian)); ?></td>

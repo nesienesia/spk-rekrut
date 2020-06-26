@@ -231,7 +231,7 @@ $sub_menu = strtolower($this->uri->segment(2));
 									</li>
 									<li class="<?php if ($sub_menu == "analisis") {
 													echo 'active';
-												} ?>"><a href="web/analisis">Analisa</a></li>
+												} ?>"><a href="web/analisis">Analisis</a></li>
 
 									</li>
 							</ul>

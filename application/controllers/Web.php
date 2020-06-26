@@ -192,10 +192,7 @@ class Web extends CI_Controller
 				$subgol 		= htmlentities(strip_tags($_POST['subgol']));
 				$jab 			= htmlentities(strip_tags($_POST['jab']));
 				$pendidikan 	= htmlentities(strip_tags($_POST['pendidikan']));
-				$pengalaman 	= htmlentities(strip_tags($_POST['pengalaman']));
-				$status 		= htmlentities(strip_tags($_POST['status']));
 				$usia			= htmlentities(strip_tags($_POST['usia']));
-				$jk 			= htmlentities(strip_tags($_POST['jk']));
 
 
 				$cek_kd = $this->Mcrud->get_data_by_pk('tbl_karyawan', 'nrp', $nrp);
@@ -215,10 +212,7 @@ class Web extends CI_Controller
 						'subgol'		=> $subgol,
 						'jab'			=> $jab,
 						'pendidikan'	=> $pendidikan,
-						'pengalaman'	=> $pengalaman,
-						'status'		=> $status,
-						'usia'			=> $usia,
-						'jk'			=> $jk
+						'usia'			=> $usia
 					);
 					$this->Mcrud->save_data('tbl_karyawan', $data);
 
@@ -279,10 +273,7 @@ class Web extends CI_Controller
 				$subgol 		= htmlentities(strip_tags($_POST['subgol']));
 				$jab 			= htmlentities(strip_tags($_POST['jab']));
 				$pendidikan 	= htmlentities(strip_tags($_POST['pendidikan']));
-				$pengalaman 	= htmlentities(strip_tags($_POST['pengalaman']));
-				$status 		= htmlentities(strip_tags($_POST['status']));
 				$usia			= htmlentities(strip_tags($_POST['usia']));
-				$jk 			= htmlentities(strip_tags($_POST['jk']));
 
 				$data = array(
 					'nrp'			=> $nrp,
@@ -293,10 +284,7 @@ class Web extends CI_Controller
 					'subgol'		=> $subgol,
 					'jab'			=> $jab,
 					'pendidikan'	=> $pendidikan,
-					'pengalaman'	=> $pengalaman,
-					'status'		=> $status,
-					'usia'			=> $usia,
-					'jk'			=> $jk
+					'usia'			=> $usia
 				);
 				$this->Mcrud->update_data('tbl_karyawan', array('nrp' => $id), $data);
 
@@ -815,11 +803,12 @@ class Web extends CI_Controller
 				$waktu_kerja	= htmlentities(strip_tags($_POST['waktu_kerja']));
 				$pelaksanaan_peraturan		= htmlentities(strip_tags($_POST['pelaksanaan_peraturan']));
 				$kehadiran		= htmlentities(strip_tags($_POST['kehadiran']));
-				$score		= (0.12 * $kualitas) + (0.11 * $kuantitas) +
-					(0.12 * $kerjasama) + (0.11 * $kepemimpinan) + (0.06 * $kemandirian)
-					+ (0.08 * $qcc) + (0.08 * $sumbang_saran) +
-					(0.08 * $tanggung_jawab)  +
-					(0.10 * $absensi) + (0.05 * $waktu_kerja) + (0.05 * $pelaksanaan_peraturan) + (0.05 * $kehadiran);
+				$score1		= (0.12 * $kualitas) + (0.11 * $kuantitas);
+				$score2 = (0.12 * $kerjasama) + (0.11 * $kepemimpinan);
+				$score3 = (0.06 * $kemandirian) + (0.08 * $qcc) + (0.08 * $sumbang_saran);
+				$score4= 0.08 * $tanggung_jawab;
+				$score5= (0.10 * $absensi) + (0.05 * $waktu_kerja) + (0.05 * $pelaksanaan_peraturan) + (0.05 * $kehadiran);
+				$score		= $score1 + $score2 + $score3 + $score4 + $score5;
 				if ($score >= 80) {
 					$rekomendasi = "Baik Sekali";
 				} elseif ($score >= 70) {
@@ -912,9 +901,12 @@ class Web extends CI_Controller
 				$waktu_kerja	= htmlentities(strip_tags($_POST['waktu_kerja']));
 				$pelaksanaan_peraturan		= htmlentities(strip_tags($_POST['pelaksanaan_peraturan']));
 				$kehadiran		= htmlentities(strip_tags($_POST['kehadiran']));
-				$score		= ((0.12 * $kualitas) + (0.11 * $kuantitas)) + ((0.12 * $kerjasama) + (0.11 * $kepemimpinan)) + ((0.6 * $kemandirian)
-					+ (0.8 * $qcc) + (0.8 * $sumbang_saran)) + (0.8 * $tanggung_jawab) + ((0.10 * $absensi)
-					+ (0.5 * $waktu_kerja) + (0.5 * $pelaksanaan_peraturan) + (0.5 * $kehadiran));
+				$score1		= (0.12 * $kualitas) + (0.11 * $kuantitas);
+				$score2 = (0.12 * $kerjasama) + (0.11 * $kepemimpinan);
+				$score3 = (0.06 * $kemandirian) + (0.08 * $qcc) + (0.08 * $sumbang_saran);
+				$score4= 0.08 * $tanggung_jawab;
+				$score5= (0.10 * $absensi) + (0.05 * $waktu_kerja) + (0.05 * $pelaksanaan_peraturan) + (0.05 * $kehadiran);
+				$score		= $score1 + $score2 + $score3 + $score4 + $score5;
 				if ($score >= 80) {
 					$rekomendasi = "Baik Sekali";
 				} elseif ($score >= 70) {
@@ -1847,11 +1839,11 @@ class Web extends CI_Controller
 				$html = $html . "<thead>";
 				$html = $html . "<td>Nama karyawan</td>";
 				$html = $html . "<td>Kriteria</td>";
-				$html = $html . "<td>Nilai<br/>Profil<br/>karyawan</td>";
-				$html = $html . "<td>Nilai<br/>Profil<br/>Standar</td>";
+				$html = $html . "<td>Nilai<br/>Profil<br/>Individu</td>";
+				$html = $html . "<td>Nilai<br/>Profil<br/>Jabatan</td>";
 				$html = $html . "<td>Gap</td>";
 				$html = $html . "<td>Nilai Gap</td>";
-				$html = $html . "<td>Rata2</td>";
+				$html = $html . "<td>Rata-rata</td>";
 				$html = $html . "<td>Total Nilai</td>";
 				$html = $html . "</tr>";
 
@@ -1949,8 +1941,6 @@ class Web extends CI_Controller
 				$data['nm_karyawan_rangking'] = $nm_karyawan_rangking;
 				$data['total_nilai_rangking'] = $total_nilai_rangking;
 
-
-				//$this->load->view('dephead/analisis', $data);
 				$this->load->view('header', $data);
 				$this->load->view('dephead/analisis', $data);
 				$this->load->view('footer');
